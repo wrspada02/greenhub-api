@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :produto do
-    id_produto { 1 }
-    tipo { "MyString" }
-    peso { 1.5 }
+    sequence(:id_produto) { |n| n }
+    tipo { Faker::Commerce.product_name }
+    peso { Faker::Number.decimal(l_digits: 2, r_digits: 2) }
   end
 end

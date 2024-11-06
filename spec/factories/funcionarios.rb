@@ -1,5 +1,8 @@
 FactoryBot.define do
   factory :funcionario do
-    id_funcionario { 1 }
+    sequence(:id_funcionario) { |n| n }
+
+    created_at { Faker::Time.backward(days: 14) }
+    updated_at { Faker::Time.backward(days: 7) }
   end
 end
