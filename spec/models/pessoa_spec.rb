@@ -4,7 +4,8 @@ RSpec.describe Pessoa, type: :model do
   let(:pessoa) { build(:empresa) }
 
   describe 'associations' do
-    it { is_expected.to have_one(:funcionario) }
+    it { is_expected.to belong_to(:funcionario) }
+    it { is_expected.to belong_to(:fornecedor) }
   end
 
   describe 'validations' do
