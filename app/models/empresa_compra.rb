@@ -1,0 +1,2 @@
+class EmpresaCompra < ApplicationRecord
+end
