@@ -1,5 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe Produto, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:produto) { build(:produto) }
+
+  describe 'associations' do
+    it { is_expected.to have_many(:fornecedor_vendas) }
+  end
+
+  describe 'validations' do
+    it { is_expected.to validate_presence_of(:peso) }
+    it { is_expected.to validate_numericality_of(:peso).is_greater_than(0) }
+    it { is_expected.to validate_presence_of(:tipo) }
+  end
 end
