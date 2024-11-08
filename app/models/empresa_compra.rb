@@ -1,2 +1,0 @@
-class EmpresaCompra < ApplicationRecord
-end
