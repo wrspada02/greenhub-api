@@ -3,5 +3,4 @@ class Pessoa < ApplicationRecord
   validates :cpf, presence: true
 
   belongs_to :funcionario
-  belongs_to :fornecedor
 end
