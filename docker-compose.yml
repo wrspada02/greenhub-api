@@ -1,0 +1,14 @@
+version: '3.5'
+services:
+  web:
+    build: .
+    command: bundle exec rails s -b '0.0.0.0'
+    depends_on:
+      - postgres
+    ports:
+      - 3000:3000
+
+  postgres:
+    image: postgres:16.3
+    hostname: postgres
+    env_file: .env.dev
