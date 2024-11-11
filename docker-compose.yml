@@ -7,8 +7,12 @@ services:
       - sqlite3
     ports:
       - 3000:3000
+    volumes:
+      - .:/app
 
   sqlite3:
     image: keinos/sqlite3
     hostname: sqlite3
     env_file: .env.dev
+    volumes:
+      - .:/db
