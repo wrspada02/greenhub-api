@@ -5,6 +5,7 @@ RSpec.describe Empresa, type: :model do
 
   describe 'associations' do
     it { is_expected.to have_many(:funcionarios) }
+    it { is_expected.to have_many(:pagamentos) }
   end
 
   describe 'validations' do
