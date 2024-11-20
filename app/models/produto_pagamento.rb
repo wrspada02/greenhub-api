@@ -1,0 +1,2 @@
+class ProdutoPagamento < ApplicationRecord
+end
