@@ -6,7 +6,7 @@ RSpec.describe Empresa, type: :model do
   describe 'associations' do
     it { is_expected.to have_many(:funcionarios) }
     it { is_expected.to have_many(:compras) }
-    it { is_expected.to have_many(:vendassssss) }
+    it { is_expected.to have_many(:vendas) }
   end
 
   describe 'validations' do

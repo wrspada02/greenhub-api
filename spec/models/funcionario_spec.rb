@@ -4,6 +4,7 @@ RSpec.describe Funcionario, type: :model do
   let(:funcionario) { build(:funcionario) }
 
   describe 'associations' do
+    it { is_expected.to belong_to(:empresa) }
   end
 
   describe 'validations' do
