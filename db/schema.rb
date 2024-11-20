@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_20_194821) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_20_230449) do
   create_table "empresas", force: :cascade do |t|
     t.integer "id_empresa"
     t.string "endereco"
@@ -43,6 +43,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_20_194821) do
     t.integer "quantidade"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "pagamento_id"
+    t.integer "produto_id"
+    t.index ["pagamento_id"], name: "index_produto_pagamentos_on_pagamento_id"
+    t.index ["produto_id"], name: "index_produto_pagamentos_on_produto_id"
   end
 
   create_table "produtos", force: :cascade do |t|
@@ -54,4 +58,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_20_194821) do
     t.string "nome"
   end
 
+  add_foreign_key "produto_pagamentos", "pagamentos"
+  add_foreign_key "produto_pagamentos", "produtos"
 end

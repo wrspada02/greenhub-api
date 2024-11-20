@@ -4,6 +4,7 @@ RSpec.describe Produto, type: :model do
   let(:produto) { build(:produto) }
 
   describe 'associations' do
+    it { is_expected.to have_many(:produto_pagamentos) }
   end
 
   describe 'validations' do

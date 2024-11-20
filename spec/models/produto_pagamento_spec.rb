@@ -4,6 +4,8 @@ RSpec.describe ProdutoPagamento, type: :model do
   let(:produto_pagamento) { build(:produto_pagamento) }
 
   describe 'associations' do
+    it { is_expected.to belong_to(:pagamento) }
+    it { is_expected.to belong_to(:produto) }
   end
 
   describe 'validations' do
