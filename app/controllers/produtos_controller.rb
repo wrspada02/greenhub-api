@@ -1,25 +1,45 @@
 class ProdutosController < ApplicationController
+  before_action :set_product, only: %i[show update destroy]
+  
   def index
     @products = Produto.all
-  end
+    
+    render json: @products
+  end  
 
   def show
-    @product = Produto.find(params[:id])
+    render json: @product
   end
 
   def create
-    Rails.logger.debug "Params: #{params.inspect}"
     @product = Produto.new(product_params)
+
+    if @product.save
+      render json: @product, status: :created, location: @product
+    else
+      render json: @product.errors, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    if @product.update(product_params)
+      render json: @product
+    else
+      render json: @product.errors, status: :unprocessable_entity
+    end
   end
 
   def destroy
-    @product = Produto.find(params[:id])
     @product.destroy
   end
 
   private
 
+  def set_product
+    @product = Produto.find(params[:id])
+  end
+
   def product_params
-    params.require(:produto).permit(:name, :price, :description, :stock)
+    params.require(:produto).permit(:nome, :tipo, :peso)
   end
 end

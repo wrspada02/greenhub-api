@@ -2463,3 +2463,193 @@ No template found for ProdutosController#create, rendering head :no_content
 Completed 204 No Content in 42ms (ActiveRecord: 6.1ms | Allocations: 18844)
 
 
+Started POST "/produtos" for 127.0.0.1 at 2024-11-22 08:05:36 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProdutosController#create as */*
+  Parameters: {"tipo"=>"plastico", "nome"=>"Garrafa PET", "peso"=>2.5, "produto"=>{"tipo"=>"plastico", "peso"=>2.5, "nome"=>"Garrafa PET"}}
+Params: #<ActionController::Parameters {"tipo"=>"plastico", "nome"=>"Garrafa PET", "peso"=>2.5, "controller"=>"produtos", "action"=>"create", "produto"=>{"tipo"=>"plastico", "peso"=>2.5, "nome"=>"Garrafa PET"}} permitted: false>
+[31mUnpermitted parameters: :tipo, :peso, :nome. Context: { controller: ProdutosController, action: create, request: #<ActionDispatch::Request:0x00007f8bcc883998>, params: {"tipo"=>"plastico", "nome"=>"Garrafa PET", "peso"=>2.5, "controller"=>"produtos", "action"=>"create", "produto"=>{"tipo"=>"plastico", "peso"=>2.5, "nome"=>"Garrafa PET"}} }[0m
+No template found for ProdutosController#create, rendering head :no_content
+Completed 204 No Content in 9ms (ActiveRecord: 1.1ms | Allocations: 19052)
+
+
+Started POST "/produtos" for 127.0.0.1 at 2024-11-22 08:07:50 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProdutosController#create as */*
+  Parameters: {"tipo"=>"plastico", "nome"=>"Garrafa PET", "peso"=>2.5, "produto"=>{"tipo"=>"plastico", "peso"=>2.5, "nome"=>"Garrafa PET"}}
+No template found for ProdutosController#create, rendering head :no_content
+Completed 204 No Content in 7ms (ActiveRecord: 1.1ms | Allocations: 18738)
+
+
+Started GET "/produtos" for 127.0.0.1 at 2024-11-22 08:08:24 -0300
+Processing by ProdutosController#index as */*
+  Parameters: {"tipo"=>"plastico", "nome"=>"Garrafa PET", "peso"=>2.5, "produto"=>{"tipo"=>"plastico", "peso"=>2.5, "nome"=>"Garrafa PET"}}
+No template found for ProdutosController#index, rendering head :no_content
+Completed 204 No Content in 15ms (ActiveRecord: 0.0ms | Allocations: 4759)
+
+
+Started GET "/produtos" for 127.0.0.1 at 2024-11-22 08:08:25 -0300
+Processing by ProdutosController#index as */*
+  Parameters: {"tipo"=>"plastico", "nome"=>"Garrafa PET", "peso"=>2.5, "produto"=>{"tipo"=>"plastico", "peso"=>2.5, "nome"=>"Garrafa PET"}}
+No template found for ProdutosController#index, rendering head :no_content
+Completed 204 No Content in 0ms (ActiveRecord: 0.0ms | Allocations: 122)
+
+
+Started POST "/produtos" for 127.0.0.1 at 2024-11-22 08:09:18 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProdutosController#create as */*
+  Parameters: {"tipo"=>"plastico", "nome"=>"Garrafa PET", "peso"=>2.5, "produto"=>{"tipo"=>"plastico", "peso"=>2.5, "nome"=>"Garrafa PET"}}
+No template found for ProdutosController#create, rendering head :no_content
+Completed 204 No Content in 7ms (ActiveRecord: 1.2ms | Allocations: 18738)
+
+
+Started POST "/produtos" for 127.0.0.1 at 2024-11-22 08:13:32 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/root/projects_william/ADS/greenhub-api/app/controllers/produtos_controller.rb:5: syntax error, unexpected instance variable, expecting `end'
+    render :json @products
+                 ^~~~~~~~~
+):
+  
+app/controllers/produtos_controller.rb:5: syntax error, unexpected instance variable, expecting `end'
+Started POST "/produtos" for 127.0.0.1 at 2024-11-22 08:16:33 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/root/projects_william/ADS/greenhub-api/app/controllers/produtos_controller.rb:5: syntax error, unexpected instance variable, expecting `end'
+    render :json @products
+                 ^~~~~~~~~
+):
+  
+app/controllers/produtos_controller.rb:5: syntax error, unexpected instance variable, expecting `end'
+Started POST "/produtos" for 127.0.0.1 at 2024-11-22 08:16:59 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/root/projects_william/ADS/greenhub-api/app/controllers/produtos_controller.rb:5: syntax error, unexpected instance variable, expecting `end'
+    render :json @products
+                 ^~~~~~~~~
+):
+  
+app/controllers/produtos_controller.rb:5: syntax error, unexpected instance variable, expecting `end'
+Started POST "/produtos" for 127.0.0.1 at 2024-11-22 08:17:42 -0300
+  
+SyntaxError (/root/projects_william/ADS/greenhub-api/app/controllers/produtos_controller.rb:5: syntax error, unexpected instance variable, expecting `end'
+    render :json @products
+                 ^~~~~~~~~
+):
+  
+app/controllers/produtos_controller.rb:5: syntax error, unexpected instance variable, expecting `end'
+Started POST "/produtos" for 127.0.0.1 at 2024-11-22 08:18:32 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProdutosController#create as */*
+  Parameters: {"tipo"=>"plastico", "nome"=>"Garrafa PET", "peso"=>2.5, "produto"=>{"tipo"=>"plastico", "peso"=>2.5, "nome"=>"Garrafa PET"}}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 1.1ms | Allocations: 2707)
+
+
+  
+NameError (undefined local variable or method `product' for #<ProdutosController:0x0000000000b248>
+Did you mean?  proc):
+  
+app/controllers/produtos_controller.rb:41:in `product_params'
+app/controllers/produtos_controller.rb:13:in `create'
+Started POST "/produtos" for 127.0.0.1 at 2024-11-22 08:18:59 -0300
+Processing by ProdutosController#create as */*
+  Parameters: {"tipo"=>"plastico", "nome"=>"Garrafa PET", "peso"=>2.5, "produto"=>{"tipo"=>"plastico", "peso"=>2.5, "nome"=>"Garrafa PET"}}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 1.0ms | Allocations: 2613)
+
+
+  
+NameError (undefined local variable or method `product' for #<ProdutosController:0x0000000000ec90>
+Did you mean?  proc):
+  
+app/controllers/produtos_controller.rb:43:in `product_params'
+app/controllers/produtos_controller.rb:15:in `create'
+Started POST "/produtos" for 127.0.0.1 at 2024-11-22 08:19:05 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProdutosController#create as */*
+  Parameters: {"tipo"=>"plastico", "nome"=>"Garrafa PET", "peso"=>2.5, "produto"=>{"tipo"=>"plastico", "peso"=>2.5, "nome"=>"Garrafa PET"}}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 1.2ms | Allocations: 2731)
+
+
+  
+NameError (undefined local variable or method `product' for #<ProdutosController:0x0000000000b248>
+Did you mean?  proc):
+  
+app/controllers/produtos_controller.rb:43:in `product_params'
+app/controllers/produtos_controller.rb:15:in `create'
+Started POST "/produtos" for 127.0.0.1 at 2024-11-22 08:20:11 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProdutosController#create as */*
+  Parameters: {"tipo"=>"plastico", "nome"=>"Garrafa PET", "peso"=>2.5, "produto"=>{"tipo"=>"plastico", "peso"=>2.5, "nome"=>"Garrafa PET"}}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 1.1ms | Allocations: 2733)
+
+
+  
+NameError (undefined local variable or method `product' for #<ProdutosController:0x0000000000b248>
+Did you mean?  proc):
+  
+app/controllers/produtos_controller.rb:43:in `product_params'
+app/controllers/produtos_controller.rb:15:in `create'
+Started POST "/produtos" for 127.0.0.1 at 2024-11-22 08:20:40 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProdutosController#create as */*
+  Parameters: {"tipo"=>"plastico", "nome"=>"Garrafa PET", "peso"=>2.5, "produto"=>{"tipo"=>"plastico", "peso"=>2.5, "nome"=>"Garrafa PET"}}
+Completed 400 Bad Request in 0ms (ActiveRecord: 1.0ms | Allocations: 616)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: product
+Did you mean?  produto):
+  
+app/controllers/produtos_controller.rb:42:in `product_params'
+app/controllers/produtos_controller.rb:14:in `create'
+Started POST "/produtos" for 127.0.0.1 at 2024-11-22 08:21:02 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProdutosController#create as */*
+  Parameters: {"tipo"=>"plastico", "nome"=>"Garrafa PET", "peso"=>2.5, "produto"=>{"tipo"=>"plastico", "peso"=>2.5, "nome"=>"Garrafa PET"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/produtos_controller.rb:16:in `create'
+  [1m[36mProduto Create (0.7ms)[0m  [1m[32mINSERT INTO "produtos" ("id_produto", "tipo", "peso", "created_at", "updated_at", "nome") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["id_produto", nil], ["tipo", "plastico"], ["peso", 2.5], ["created_at", "2024-11-22 11:21:02.718937"], ["updated_at", "2024-11-22 11:21:02.718937"], ["nome", "Garrafa PET"]]
+  ↳ app/controllers/produtos_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/produtos_controller.rb:16:in `create'
+Completed 201 Created in 13ms (Views: 0.4ms | ActiveRecord: 5.2ms | Allocations: 21705)
+
+
+Started POST "/produtos" for 127.0.0.1 at 2024-11-22 08:21:11 -0300
+Processing by ProdutosController#create as */*
+  Parameters: {"tipo"=>"plastico", "nome"=>"Garrafa PET", "peso"=>0, "produto"=>{"tipo"=>"plastico", "peso"=>0, "nome"=>"Garrafa PET"}}
+Completed 422 Unprocessable Content in 126ms (Views: 125.4ms | ActiveRecord: 0.0ms | Allocations: 282516)
+
+
+Started GET "/produtos" for 127.0.0.1 at 2024-11-22 08:21:25 -0300
+Processing by ProdutosController#index as */*
+  Parameters: {"tipo"=>"plastico", "nome"=>"Garrafa PET", "peso"=>10, "produto"=>{"tipo"=>"plastico", "peso"=>10, "nome"=>"Garrafa PET"}}
+  [1m[36mProduto Load (0.1ms)[0m  [1m[34mSELECT "produtos".* FROM "produtos"[0m
+  ↳ app/controllers/produtos_controller.rb:6:in `index'
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.1ms | Allocations: 2807)
+
+
+Started GET "/produtos/1" for 127.0.0.1 at 2024-11-22 08:21:31 -0300
+Processing by ProdutosController#show as */*
+  Parameters: {"tipo"=>"plastico", "nome"=>"Garrafa PET", "peso"=>10, "id"=>"1", "produto"=>{"tipo"=>"plastico", "peso"=>10, "nome"=>"Garrafa PET"}}
+  [1m[36mProduto Load (0.1ms)[0m  [1m[34mSELECT "produtos".* FROM "produtos" WHERE "produtos"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/produtos_controller.rb:38:in `set_product'
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 4310)
+
+
+Started GET "/produtos" for 127.0.0.1 at 2024-11-22 08:21:33 -0300
+Processing by ProdutosController#index as */*
+  Parameters: {"tipo"=>"plastico", "nome"=>"Garrafa PET", "peso"=>10, "produto"=>{"tipo"=>"plastico", "peso"=>10, "nome"=>"Garrafa PET"}}
+  [1m[36mProduto Load (0.1ms)[0m  [1m[34mSELECT "produtos".* FROM "produtos"[0m
+  ↳ app/controllers/produtos_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.1ms | Allocations: 739)
+
+
+Started GET "/produtos" for 127.0.0.1 at 2024-11-22 08:21:34 -0300
+Processing by ProdutosController#index as */*
+  Parameters: {"tipo"=>"plastico", "nome"=>"Garrafa PET", "peso"=>10, "produto"=>{"tipo"=>"plastico", "peso"=>10, "nome"=>"Garrafa PET"}}
+  [1m[36mProduto Load (0.1ms)[0m  [1m[34mSELECT "produtos".* FROM "produtos"[0m
+  ↳ app/controllers/produtos_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.0ms | Allocations: 728)
+
+
