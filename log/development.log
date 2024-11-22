@@ -3093,3 +3093,105 @@ Processing by EmpresasController#index as HTML
 Completed 200 OK in 14ms (Views: 1.4ms | ActiveRecord: 0.5ms | Allocations: 6846)
 
 
+Started GET "/" for 127.0.0.1 at 2024-11-22 17:12:44 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (2.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/tilevs/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/railties-7.1.5/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/tilevs/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/railties-7.1.5/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.9ms | Allocations: 525)
+Completed 200 OK in 2943ms (Views: 41.8ms | ActiveRecord: 0.0ms | Allocations: 287226)
+
+
+Started GET "/produtos" for 127.0.0.1 at 2024-11-22 17:12:54 -0300
+Processing by ProdutosController#index as HTML
+  [1m[36mProduto Load (1.6ms)[0m  [1m[34mSELECT "produtos".* FROM "produtos"[0m
+  ↳ app/controllers/produtos_controller.rb:7:in `index'
+Completed 200 OK in 199ms (Views: 4.6ms | ActiveRecord: 33.6ms | Allocations: 32787)
+
+
+Started GET "/empresas" for 127.0.0.1 at 2024-11-22 17:12:57 -0300
+Processing by EmpresasController#index as HTML
+  [1m[36mEmpresa Load (0.5ms)[0m  [1m[34mSELECT "empresas".* FROM "empresas"[0m
+  ↳ app/controllers/empresas_controller.rb:7:in `index'
+Completed 200 OK in 25ms (Views: 1.8ms | ActiveRecord: 0.5ms | Allocations: 6951)
+
+
+Started GET "/" for 127.0.0.1 at 2024-11-22 17:25:19 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/tilevs/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/railties-7.1.5/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/tilevs/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/railties-7.1.5/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.7ms | Allocations: 525)
+Completed 200 OK in 944ms (Views: 14.6ms | ActiveRecord: 0.0ms | Allocations: 287217)
+
+
+Started GET "/funcionarios" for 127.0.0.1 at 2024-11-22 17:25:25 -0300
+Processing by FuncionariosController#index as HTML
+  [1m[36mFuncionario Load (1.7ms)[0m  [1m[34mSELECT "funcionarios".* FROM "funcionarios"[0m
+  ↳ app/controllers/funcionarios_controller.rb:7:in `index'
+Completed 200 OK in 126ms (Views: -11.5ms | ActiveRecord: 34.7ms | Allocations: 14830)
+
+
+Started GET "/" for 127.0.0.1 at 2024-11-22 17:39:58 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/tilevs/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/railties-7.1.5/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/tilevs/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/railties-7.1.5/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.7ms | Allocations: 525)
+Completed 200 OK in 748ms (Views: 10.7ms | ActiveRecord: 0.0ms | Allocations: 287217)
+
+
+Started GET "/produtos" for 127.0.0.1 at 2024-11-22 17:40:02 -0300
+Processing by ProdutosController#index as HTML
+  [1m[36mProduto Load (2.3ms)[0m  [1m[34mSELECT "produtos".* FROM "produtos"[0m
+  ↳ app/controllers/produtos_controller.rb:7:in `index'
+Completed 200 OK in 95ms (Views: -0.7ms | ActiveRecord: 34.7ms | Allocations: 32782)
+
+
+Started GET "/pagamentos" for 127.0.0.1 at 2024-11-22 17:40:03 -0300
+Processing by PagamentosController#index as HTML
+  [1m[36mPagamento Load (0.5ms)[0m  [1m[34mSELECT "pagamentos".* FROM "pagamentos"[0m
+  ↳ app/controllers/pagamentos_controller.rb:7:in `index'
+Completed 200 OK in 34ms (Views: 2.1ms | ActiveRecord: 0.5ms | Allocations: 5358)
+
+
+Started GET "/" for 127.0.0.1 at 2024-11-22 17:48:29 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/tilevs/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/railties-7.1.5/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/tilevs/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/railties-7.1.5/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.7ms | Allocations: 525)
+Completed 200 OK in 780ms (Views: 11.1ms | ActiveRecord: 0.0ms | Allocations: 287215)
+
+
+Started GET "/produtos" for 127.0.0.1 at 2024-11-22 17:48:34 -0300
+Processing by ProdutosController#index as HTML
+  [1m[36mProduto Load (1.1ms)[0m  [1m[34mSELECT "produtos".* FROM "produtos"[0m
+  ↳ app/controllers/produtos_controller.rb:7:in `index'
+Completed 200 OK in 84ms (Views: -5.5ms | ActiveRecord: 37.9ms | Allocations: 32779)
+
+
+Started GET "/produto_pagamentos" for 127.0.0.1 at 2024-11-22 17:48:38 -0300
+Processing by ProdutoPagamentosController#index as HTML
+  [1m[36mProdutoPagamento Load (0.7ms)[0m  [1m[34mSELECT "produto_pagamentos".* FROM "produto_pagamentos"[0m
+  ↳ app/controllers/produto_pagamentos_controller.rb:7:in `index'
+Completed 200 OK in 29ms (Views: 1.8ms | ActiveRecord: 0.7ms | Allocations: 4377)
+
+
+Started GET "/produtos" for 127.0.0.1 at 2024-11-22 17:50:25 -0300
+Processing by ProdutosController#index as HTML
+  [1m[36mProduto Load (0.4ms)[0m  [1m[34mSELECT "produtos".* FROM "produtos"[0m
+  ↳ app/controllers/produtos_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.4ms | Allocations: 746)
+
+
+Started GET "/empresas" for 127.0.0.1 at 2024-11-22 17:50:29 -0300
+Processing by EmpresasController#index as HTML
+  [1m[36mEmpresa Load (0.5ms)[0m  [1m[34mSELECT "empresas".* FROM "empresas"[0m
+  ↳ app/controllers/empresas_controller.rb:7:in `index'
+Completed 200 OK in 13ms (Views: 1.4ms | ActiveRecord: 0.5ms | Allocations: 6948)
+
+
+Started GET "/funcionarios" for 127.0.0.1 at 2024-11-22 17:50:36 -0300
+Processing by FuncionariosController#index as HTML
+  [1m[36mFuncionario Load (0.4ms)[0m  [1m[34mSELECT "funcionarios".* FROM "funcionarios"[0m
+  ↳ app/controllers/funcionarios_controller.rb:7:in `index'
+Completed 200 OK in 10ms (Views: 1.4ms | ActiveRecord: 0.4ms | Allocations: 2556)
+
+

@@ -10,4 +10,7 @@ Rails.application.routes.draw do
   
   resources :produtos
   resources :empresas
+  resources :funcionarios
+  resources :pagamentos
+  resources :produto_pagamentos
 end
