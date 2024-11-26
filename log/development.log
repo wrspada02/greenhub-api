@@ -3195,3 +3195,1068 @@ Processing by FuncionariosController#index as HTML
 Completed 200 OK in 10ms (Views: 1.4ms | ActiveRecord: 0.4ms | Allocations: 2556)
 
 
+Started GET "/" for 127.0.0.1 at 2024-11-24 19:55:53 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (2.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/tilevs/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/railties-7.1.5/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/tilevs/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/railties-7.1.5/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.7ms | Allocations: 525)
+Completed 200 OK in 3141ms (Views: 38.3ms | ActiveRecord: 0.0ms | Allocations: 287226)
+
+
+Started GET "/produtos" for 127.0.0.1 at 2024-11-24 19:56:32 -0300
+Processing by ProdutosController#index as HTML
+  [1m[36mProduto Load (1.1ms)[0m  [1m[34mSELECT "produtos".* FROM "produtos"[0m
+  ↳ app/controllers/produtos_controller.rb:7:in `index'
+Completed 200 OK in 195ms (Views: 5.5ms | ActiveRecord: 29.9ms | Allocations: 32804)
+
+
+Started GET "/" for 127.0.0.1 at 2024-11-26 09:03:50 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/tilevs/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/railties-7.1.5/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/tilevs/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/railties-7.1.5/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.7ms | Allocations: 525)
+Completed 200 OK in 3298ms (Views: 41.9ms | ActiveRecord: 0.0ms | Allocations: 287226)
+
+
+Started GET "/" for 127.0.0.1 at 2024-11-26 09:18:11 -0300
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/tilevs/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/railties-7.1.5/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/tilevs/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/railties-7.1.5/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.1ms | Allocations: 15)
+Completed 200 OK in 14ms (Views: 2.1ms | ActiveRecord: 0.0ms | Allocations: 275)
+
+
+Started GET "/empresas" for 127.0.0.1 at 2024-11-26 09:18:14 -0300
+Processing by EmpresasController#index as HTML
+  [1m[36mEmpresa Load (3.1ms)[0m  [1m[34mSELECT "empresas".* FROM "empresas"[0m
+  ↳ app/controllers/empresas_controller.rb:7:in `index'
+Completed 200 OK in 210ms (Views: -15.6ms | ActiveRecord: 46.8ms | Allocations: 18716)
+
+
+Started GET "/produtos" for 127.0.0.1 at 2024-11-26 09:18:16 -0300
+Processing by ProdutosController#index as HTML
+  [1m[36mProduto Load (0.5ms)[0m  [1m[34mSELECT "produtos".* FROM "produtos"[0m
+  ↳ app/controllers/produtos_controller.rb:7:in `index'
+Completed 200 OK in 40ms (Views: 18.2ms | ActiveRecord: 2.3ms | Allocations: 21037)
+
+
+Started GET "/produto_pagamentos" for 127.0.0.1 at 2024-11-26 09:31:48 -0300
+Processing by ProdutoPagamentosController#index as HTML
+  [1m[36mProdutoPagamento Load (21.9ms)[0m  [1m[34mSELECT "produto_pagamentos".* FROM "produto_pagamentos"[0m
+  ↳ app/controllers/produto_pagamentos_controller.rb:7:in `index'
+Completed 200 OK in 83ms (Views: -12.0ms | ActiveRecord: 37.2ms | Allocations: 4621)
+
+
+Started POST "/produto_pagamentos" for 127.0.0.1 at 2024-11-26 09:38:59 -0300
+Processing by ProdutoPagamentosController#create as */*
+  Parameters: {"produto_pagamento"=>{"quantidade"=>10, "pagamento_id"=>1, "produto_id"=>2}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/produto_pagamentos_controller.rb:18:in `create'
+  [1m[36mPagamento Load (5.3ms)[0m  [1m[34mSELECT "pagamentos".* FROM "pagamentos" WHERE "pagamentos"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/produto_pagamentos_controller.rb:18:in `create'
+  [1m[36mProduto Load (0.2ms)[0m  [1m[34mSELECT "produtos".* FROM "produtos" WHERE "produtos"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/produto_pagamentos_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/produto_pagamentos_controller.rb:18:in `create'
+Completed 422 Unprocessable Content in 195ms (Views: 1.4ms | ActiveRecord: 54.8ms | Allocations: 35017)
+
+
+Started GET "/produtos" for 127.0.0.1 at 2024-11-26 09:42:00 -0300
+Processing by ProdutosController#index as HTML
+  [1m[36mProduto Load (0.6ms)[0m  [1m[34mSELECT "produtos".* FROM "produtos"[0m
+  ↳ app/controllers/produtos_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.6ms | Allocations: 765)
+
+
+Started GET "/" for 127.0.0.1 at 2024-11-26 11:14:59 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/tilevs/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/railties-7.1.5/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/tilevs/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/railties-7.1.5/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.6ms | Allocations: 525)
+Completed 200 OK in 940ms (Views: 17.8ms | ActiveRecord: 0.0ms | Allocations: 287219)
+
+
+Started GET "/empresas" for 127.0.0.1 at 2024-11-26 11:39:56 -0300
+Processing by EmpresasController#index as HTML
+  [1m[36mEmpresa Load (1.2ms)[0m  [1m[34mSELECT "empresas".* FROM "empresas"[0m
+  ↳ app/controllers/empresas_controller.rb:7:in `index'
+Completed 200 OK in 71ms (Views: -12.6ms | ActiveRecord: 33.3ms | Allocations: 18683)
+
+
+Started GET "/empresas" for 127.0.0.1 at 2024-11-26 11:39:56 -0300
+Processing by EmpresasController#index as HTML
+  [1m[36mEmpresa Load (0.3ms)[0m  [1m[34mSELECT "empresas".* FROM "empresas"[0m
+  ↳ app/controllers/empresas_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.3ms | Allocations: 646)
+
+
+Started POST "/empresas" for 127.0.0.1 at 2024-11-26 11:41:09 -0300
+Processing by EmpresasController#create as */*
+  Parameters: {"empresa"=>{"id_empresa"=>1, "endereco"=>"Rua Principal, 123", "cnpj"=>"12345678901234", "telefone"=>"(11) 98765-4321", "nome"=>"Empresa Exemplo"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/empresas_controller.rb:18:in `create'
+  [1m[36mEmpresa Create (2.0ms)[0m  [1m[32mINSERT INTO "empresas" ("id_empresa", "endereco", "cnpj", "telefone", "nome", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["id_empresa", 1], ["endereco", "Rua Principal, 123"], ["cnpj", "12345678901234"], ["telefone", "(11) 98765-4321"], ["nome", "Empresa Exemplo"], ["created_at", "2024-11-26 14:41:09.583486"], ["updated_at", "2024-11-26 14:41:09.583486"]]
+  ↳ app/controllers/empresas_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (8.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/empresas_controller.rb:18:in `create'
+Completed 201 Created in 36ms (Views: 0.5ms | ActiveRecord: 12.1ms | Allocations: 24113)
+
+
+Started GET "/empresas" for 127.0.0.1 at 2024-11-26 11:41:13 -0300
+Processing by EmpresasController#index as HTML
+  [1m[36mEmpresa Load (1.5ms)[0m  [1m[34mSELECT "empresas".* FROM "empresas"[0m
+  ↳ app/controllers/empresas_controller.rb:7:in `index'
+Completed 200 OK in 4ms (Views: 2.1ms | ActiveRecord: 1.5ms | Allocations: 812)
+
+
+Started GET "/empresas" for 127.0.0.1 at 2024-11-26 11:44:29 -0300
+Processing by EmpresasController#index as */*
+  [1m[36mEmpresa Load (0.3ms)[0m  [1m[34mSELECT "empresas".* FROM "empresas"[0m
+  ↳ app/controllers/empresas_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.3ms | Allocations: 748)
+
+
+Started GET "/empresas" for 127.0.0.1 at 2024-11-26 11:44:33 -0300
+Processing by EmpresasController#index as HTML
+  [1m[36mEmpresa Load (0.3ms)[0m  [1m[34mSELECT "empresas".* FROM "empresas"[0m
+  ↳ app/controllers/empresas_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.3ms | Allocations: 736)
+
+
+Started PUT "/empresas/1" for 127.0.0.1 at 2024-11-26 11:46:16 -0300
+Processing by EmpresasController#update as */*
+  Parameters: {"empresa"=>{"endereco"=>"Rua Olimpia, 436"}, "id"=>"1"}
+  [1m[36mEmpresa Load (0.4ms)[0m  [1m[34mSELECT "empresas".* FROM "empresas" WHERE "empresas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/empresas_controller.rb:44:in `set_empresa'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/empresas_controller.rb:27:in `update'
+  [1m[36mEmpresa Update (1.5ms)[0m  [1m[33mUPDATE "empresas" SET "endereco" = ?, "updated_at" = ? WHERE "empresas"."id" = ?[0m  [["endereco", "Rua Olimpia, 436"], ["updated_at", "2024-11-26 14:46:16.344105"], ["id", 1]]
+  ↳ app/controllers/empresas_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/empresas_controller.rb:27:in `update'
+Completed 200 OK in 21ms (Views: 0.3ms | ActiveRecord: 2.6ms | Allocations: 6186)
+
+
+Started GET "/empresas" for 127.0.0.1 at 2024-11-26 11:46:20 -0300
+Processing by EmpresasController#index as HTML
+  [1m[36mEmpresa Load (0.7ms)[0m  [1m[34mSELECT "empresas".* FROM "empresas"[0m
+  ↳ app/controllers/empresas_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.7ms | Allocations: 736)
+
+
+Started DELETE "/empresas/1" for 127.0.0.1 at 2024-11-26 11:47:05 -0300
+Processing by EmpresasController#destroy as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mEmpresa Load (0.2ms)[0m  [1m[34mSELECT "empresas".* FROM "empresas" WHERE "empresas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/empresas_controller.rb:44:in `set_empresa'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/empresas_controller.rb:36:in `destroy'
+  [1m[36mFuncionario Load (0.1ms)[0m  [1m[34mSELECT "funcionarios".* FROM "funcionarios" WHERE "funcionarios"."empresa_id" = ?[0m  [["empresa_id", 1]]
+  ↳ app/controllers/empresas_controller.rb:36:in `destroy'
+  [1m[36mEmpresa Destroy (0.7ms)[0m  [1m[31mDELETE FROM "empresas" WHERE "empresas"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/empresas_controller.rb:36:in `destroy'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/empresas_controller.rb:36:in `destroy'
+Completed 204 No Content in 112ms (ActiveRecord: 3.7ms | Allocations: 13365)
+
+
+Started GET "/empresas" for 127.0.0.1 at 2024-11-26 11:47:20 -0300
+Processing by EmpresasController#index as HTML
+  [1m[36mEmpresa Load (0.5ms)[0m  [1m[34mSELECT "empresas".* FROM "empresas"[0m
+  ↳ app/controllers/empresas_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.5ms | Allocations: 646)
+
+
+Started POST "/empresas" for 127.0.0.1 at 2024-11-26 11:47:26 -0300
+Processing by EmpresasController#create as */*
+  Parameters: {"empresa"=>{"id_empresa"=>1, "endereco"=>"Rua Principal, 123", "cnpj"=>"12345678901234", "telefone"=>"(11) 98765-4321", "nome"=>"Empresa Exemplo"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/empresas_controller.rb:18:in `create'
+  [1m[36mEmpresa Create (1.6ms)[0m  [1m[32mINSERT INTO "empresas" ("id_empresa", "endereco", "cnpj", "telefone", "nome", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["id_empresa", 1], ["endereco", "Rua Principal, 123"], ["cnpj", "12345678901234"], ["telefone", "(11) 98765-4321"], ["nome", "Empresa Exemplo"], ["created_at", "2024-11-26 14:47:26.336364"], ["updated_at", "2024-11-26 14:47:26.336364"]]
+  ↳ app/controllers/empresas_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/empresas_controller.rb:18:in `create'
+Completed 201 Created in 6ms (Views: 0.3ms | ActiveRecord: 2.2ms | Allocations: 2133)
+
+
+Started PUT "/empresas/1" for 127.0.0.1 at 2024-11-26 11:47:43 -0300
+Processing by EmpresasController#update as */*
+  Parameters: {"empresa"=>{"endereco"=>"Rua Olimpia, 436"}, "id"=>"1"}
+  [1m[36mEmpresa Load (0.7ms)[0m  [1m[34mSELECT "empresas".* FROM "empresas" WHERE "empresas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/empresas_controller.rb:44:in `set_empresa'
+Completed 404 Not Found in 2ms (ActiveRecord: 0.7ms | Allocations: 919)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Empresa with 'id'=1):
+  
+app/controllers/empresas_controller.rb:44:in `set_empresa'
+Started GET "/empresas" for 127.0.0.1 at 2024-11-26 11:47:44 -0300
+Processing by EmpresasController#index as HTML
+  [1m[36mEmpresa Load (0.2ms)[0m  [1m[34mSELECT "empresas".* FROM "empresas"[0m
+  ↳ app/controllers/empresas_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.2ms | Allocations: 735)
+
+
+Started GET "/empresas" for 127.0.0.1 at 2024-11-26 11:47:50 -0300
+Processing by EmpresasController#index as HTML
+  [1m[36mEmpresa Load (0.3ms)[0m  [1m[34mSELECT "empresas".* FROM "empresas"[0m
+  ↳ app/controllers/empresas_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.3ms | Allocations: 736)
+
+
+Started PUT "/empresas/1" for 127.0.0.1 at 2024-11-26 11:47:55 -0300
+Processing by EmpresasController#update as */*
+  Parameters: {"empresa"=>{"endereco"=>"Rua Olimpia, 436"}, "id"=>"1"}
+  [1m[36mEmpresa Load (0.2ms)[0m  [1m[34mSELECT "empresas".* FROM "empresas" WHERE "empresas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/empresas_controller.rb:44:in `set_empresa'
+Completed 404 Not Found in 2ms (ActiveRecord: 0.2ms | Allocations: 896)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Empresa with 'id'=1):
+  
+app/controllers/empresas_controller.rb:44:in `set_empresa'
+Started GET "/empresas" for 127.0.0.1 at 2024-11-26 11:48:03 -0300
+Processing by EmpresasController#index as HTML
+  [1m[36mEmpresa Load (0.2ms)[0m  [1m[34mSELECT "empresas".* FROM "empresas"[0m
+  ↳ app/controllers/empresas_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.2ms | Allocations: 735)
+
+
+Started GET "/empresas" for 127.0.0.1 at 2024-11-26 11:48:17 -0300
+Processing by EmpresasController#index as */*
+  [1m[36mEmpresa Load (0.3ms)[0m  [1m[34mSELECT "empresas".* FROM "empresas"[0m
+  ↳ app/controllers/empresas_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.3ms | Allocations: 737)
+
+
+Started GET "/empresas" for 127.0.0.1 at 2024-11-26 11:48:28 -0300
+Processing by EmpresasController#index as HTML
+  [1m[36mEmpresa Load (0.2ms)[0m  [1m[34mSELECT "empresas".* FROM "empresas"[0m
+  ↳ app/controllers/empresas_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.2ms | Allocations: 736)
+
+
+Started GET "/empresas/1" for 127.0.0.1 at 2024-11-26 11:48:30 -0300
+Processing by EmpresasController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEmpresa Load (0.3ms)[0m  [1m[34mSELECT "empresas".* FROM "empresas" WHERE "empresas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/empresas_controller.rb:44:in `set_empresa'
+Completed 404 Not Found in 2ms (ActiveRecord: 0.3ms | Allocations: 891)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Empresa with 'id'=1):
+  
+app/controllers/empresas_controller.rb:44:in `set_empresa'
+Started GET "/empresas/2" for 127.0.0.1 at 2024-11-26 11:48:36 -0300
+Processing by EmpresasController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mEmpresa Load (0.2ms)[0m  [1m[34mSELECT "empresas".* FROM "empresas" WHERE "empresas"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/empresas_controller.rb:44:in `set_empresa'
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 619)
+
+
+Started PUT "/empresas/2" for 127.0.0.1 at 2024-11-26 11:48:53 -0300
+Processing by EmpresasController#update as */*
+  Parameters: {"empresa"=>{"endereco"=>"Rua Olimpia, 436"}, "id"=>"2"}
+  [1m[36mEmpresa Load (0.2ms)[0m  [1m[34mSELECT "empresas".* FROM "empresas" WHERE "empresas"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/empresas_controller.rb:44:in `set_empresa'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/empresas_controller.rb:27:in `update'
+  [1m[36mEmpresa Update (1.8ms)[0m  [1m[33mUPDATE "empresas" SET "endereco" = ?, "updated_at" = ? WHERE "empresas"."id" = ?[0m  [["endereco", "Rua Olimpia, 436"], ["updated_at", "2024-11-26 14:48:53.410207"], ["id", 2]]
+  ↳ app/controllers/empresas_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/empresas_controller.rb:27:in `update'
+Completed 200 OK in 7ms (Views: 0.2ms | ActiveRecord: 2.5ms | Allocations: 2597)
+
+
+Started DELETE "/empresas/1" for 127.0.0.1 at 2024-11-26 11:49:01 -0300
+Processing by EmpresasController#destroy as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mEmpresa Load (0.7ms)[0m  [1m[34mSELECT "empresas".* FROM "empresas" WHERE "empresas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/empresas_controller.rb:44:in `set_empresa'
+Completed 404 Not Found in 2ms (ActiveRecord: 0.7ms | Allocations: 895)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Empresa with 'id'=1):
+  
+app/controllers/empresas_controller.rb:44:in `set_empresa'
+Started GET "/empresas/2" for 127.0.0.1 at 2024-11-26 11:49:11 -0300
+Processing by EmpresasController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mEmpresa Load (0.3ms)[0m  [1m[34mSELECT "empresas".* FROM "empresas" WHERE "empresas"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/empresas_controller.rb:44:in `set_empresa'
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.3ms | Allocations: 616)
+
+
+Started GET "/empresas" for 127.0.0.1 at 2024-11-26 11:49:16 -0300
+Processing by EmpresasController#index as HTML
+  [1m[36mEmpresa Load (0.2ms)[0m  [1m[34mSELECT "empresas".* FROM "empresas"[0m
+  ↳ app/controllers/empresas_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.2ms | Allocations: 736)
+
+
+Started GET "/produtos" for 127.0.0.1 at 2024-11-26 11:52:50 -0300
+Processing by ProdutosController#index as HTML
+  [1m[36mProduto Load (0.4ms)[0m  [1m[34mSELECT "produtos".* FROM "produtos"[0m
+  ↳ app/controllers/produtos_controller.rb:7:in `index'
+Completed 200 OK in 27ms (Views: 17.2ms | ActiveRecord: 1.3ms | Allocations: 19022)
+
+
+Started GET "/produtos" for 127.0.0.1 at 2024-11-26 11:53:37 -0300
+Processing by ProdutosController#index as */*
+  Parameters: {"produto"=>{"id_produto"=>1, "tipo"=>"Papel", "peso"=>1.5, "nome"=>"Papelão"}}
+  [1m[36mProduto Load (0.4ms)[0m  [1m[34mSELECT "produtos".* FROM "produtos"[0m
+  ↳ app/controllers/produtos_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.4ms | Allocations: 734)
+
+
+Started GET "/produtos" for 127.0.0.1 at 2024-11-26 11:53:39 -0300
+Processing by ProdutosController#index as HTML
+  [1m[36mProduto Load (0.2ms)[0m  [1m[34mSELECT "produtos".* FROM "produtos"[0m
+  ↳ app/controllers/produtos_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 2.8ms | ActiveRecord: 0.2ms | Allocations: 732)
+
+
+Started GET "/produtos" for 127.0.0.1 at 2024-11-26 11:53:59 -0300
+Processing by ProdutosController#index as */*
+  Parameters: {"produto"=>{"id_produto"=>1, "tipo"=>"Papel", "peso"=>1.5, "nome"=>"Papelão"}}
+  [1m[36mProduto Load (0.3ms)[0m  [1m[34mSELECT "produtos".* FROM "produtos"[0m
+  ↳ app/controllers/produtos_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 2.1ms | ActiveRecord: 0.3ms | Allocations: 733)
+
+
+Started GET "/produtos" for 127.0.0.1 at 2024-11-26 11:54:01 -0300
+Processing by ProdutosController#index as */*
+  Parameters: {"produto"=>{"id_produto"=>1, "tipo"=>"Papel", "peso"=>1.5, "nome"=>"Papelão"}}
+  [1m[36mProduto Load (0.5ms)[0m  [1m[34mSELECT "produtos".* FROM "produtos"[0m
+  ↳ app/controllers/produtos_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.5ms | Allocations: 733)
+
+
+Started GET "/produtos" for 127.0.0.1 at 2024-11-26 11:54:06 -0300
+Processing by ProdutosController#index as HTML
+  [1m[36mProduto Load (0.2ms)[0m  [1m[34mSELECT "produtos".* FROM "produtos"[0m
+  ↳ app/controllers/produtos_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.2ms | Allocations: 732)
+
+
+Started GET "/produtos" for 127.0.0.1 at 2024-11-26 11:54:06 -0300
+Processing by ProdutosController#index as HTML
+  [1m[36mProduto Load (0.2ms)[0m  [1m[34mSELECT "produtos".* FROM "produtos"[0m
+  ↳ app/controllers/produtos_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.2ms | Allocations: 732)
+
+
+Started GET "/produtos" for 127.0.0.1 at 2024-11-26 11:54:06 -0300
+Processing by ProdutosController#index as HTML
+  [1m[36mProduto Load (0.4ms)[0m  [1m[34mSELECT "produtos".* FROM "produtos"[0m
+  ↳ app/controllers/produtos_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.4ms | Allocations: 732)
+
+
+Started GET "/produtos" for 127.0.0.1 at 2024-11-26 11:54:07 -0300
+Processing by ProdutosController#index as HTML
+  [1m[36mProduto Load (0.3ms)[0m  [1m[34mSELECT "produtos".* FROM "produtos"[0m
+  ↳ app/controllers/produtos_controller.rb:7:in `index'
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.3ms | Allocations: 732)
+
+
+Started GET "/produtos" for 127.0.0.1 at 2024-11-26 11:54:07 -0300
+Processing by ProdutosController#index as HTML
+  [1m[36mProduto Load (0.2ms)[0m  [1m[34mSELECT "produtos".* FROM "produtos"[0m
+  ↳ app/controllers/produtos_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.2ms | Allocations: 732)
+
+
+Started GET "/produtos" for 127.0.0.1 at 2024-11-26 11:54:07 -0300
+Processing by ProdutosController#index as HTML
+  [1m[36mProduto Load (0.3ms)[0m  [1m[34mSELECT "produtos".* FROM "produtos"[0m
+  ↳ app/controllers/produtos_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.3ms | Allocations: 732)
+
+
+Started POST "/produtos" for 127.0.0.1 at 2024-11-26 11:55:02 -0300
+Processing by ProdutosController#create as */*
+  Parameters: {"produto"=>{"id_produto"=>1, "tipo"=>"Papel", "peso"=>1.5, "nome"=>"Papelão"}}
+[31mUnpermitted parameter: :id_produto. Context: { controller: ProdutosController, action: create, request: #<ActionDispatch::Request:0x00007f73d43b36a8>, params: {"produto"=>{"id_produto"=>1, "tipo"=>"Papel", "peso"=>1.5, "nome"=>"Papelão"}, "controller"=>"produtos", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/produtos_controller.rb:17:in `create'
+  [1m[36mProduto Create (2.5ms)[0m  [1m[32mINSERT INTO "produtos" ("id_produto", "tipo", "peso", "created_at", "updated_at", "nome") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["id_produto", nil], ["tipo", "Papel"], ["peso", 1.5], ["created_at", "2024-11-26 14:55:02.303576"], ["updated_at", "2024-11-26 14:55:02.303576"], ["nome", "Papelão"]]
+  ↳ app/controllers/produtos_controller.rb:17:in `create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/produtos_controller.rb:17:in `create'
+Completed 201 Created in 8ms (Views: 0.3ms | ActiveRecord: 3.2ms | Allocations: 2983)
+
+
+Started GET "/produtos" for 127.0.0.1 at 2024-11-26 11:55:09 -0300
+Processing by ProdutosController#index as HTML
+  [1m[36mProduto Load (0.5ms)[0m  [1m[34mSELECT "produtos".* FROM "produtos"[0m
+  ↳ app/controllers/produtos_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.5ms | Allocations: 811)
+
+
+Started POST "/produtos" for 127.0.0.1 at 2024-11-26 11:55:13 -0300
+Processing by ProdutosController#create as */*
+  Parameters: {"produto"=>{"id_produto"=>1, "tipo"=>"Papel", "peso"=>1.5, "nome"=>"Papelão"}}
+[31mUnpermitted parameter: :id_produto. Context: { controller: ProdutosController, action: create, request: #<ActionDispatch::Request:0x00007f73d0186fa0>, params: {"produto"=>{"id_produto"=>1, "tipo"=>"Papel", "peso"=>1.5, "nome"=>"Papelão"}, "controller"=>"produtos", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/produtos_controller.rb:17:in `create'
+  [1m[36mProduto Create (2.2ms)[0m  [1m[32mINSERT INTO "produtos" ("id_produto", "tipo", "peso", "created_at", "updated_at", "nome") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["id_produto", nil], ["tipo", "Papel"], ["peso", 1.5], ["created_at", "2024-11-26 14:55:13.726706"], ["updated_at", "2024-11-26 14:55:13.726706"], ["nome", "Papelão"]]
+  ↳ app/controllers/produtos_controller.rb:17:in `create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/produtos_controller.rb:17:in `create'
+Completed 201 Created in 10ms (Views: 0.3ms | ActiveRecord: 2.9ms | Allocations: 2190)
+
+
+Started GET "/produtos" for 127.0.0.1 at 2024-11-26 11:55:16 -0300
+Processing by ProdutosController#index as HTML
+  [1m[36mProduto Load (0.5ms)[0m  [1m[34mSELECT "produtos".* FROM "produtos"[0m
+  ↳ app/controllers/produtos_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 2.8ms | ActiveRecord: 0.5ms | Allocations: 888)
+
+
+Started GET "/produtos" for 127.0.0.1 at 2024-11-26 11:56:08 -0300
+Processing by ProdutosController#index as */*
+  [1m[36mProduto Load (0.3ms)[0m  [1m[34mSELECT "produtos".* FROM "produtos"[0m
+  ↳ app/controllers/produtos_controller.rb:7:in `index'
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.2ms | Allocations: 889)
+
+
+Started GET "/produtos/1" for 127.0.0.1 at 2024-11-26 11:56:45 -0300
+Processing by ProdutosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduto Load (0.2ms)[0m  [1m[34mSELECT "produtos".* FROM "produtos" WHERE "produtos"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/produtos_controller.rb:39:in `set_product'
+Completed 200 OK in 3ms (Views: 0.7ms | ActiveRecord: 0.2ms | Allocations: 1219)
+
+
+Started PUT "/produtos/1" for 127.0.0.1 at 2024-11-26 11:57:38 -0300
+Processing by ProdutosController#update as */*
+  Parameters: {"produto"=>{"peso"=>2.0}, "id"=>"1"}
+  [1m[36mProduto Load (0.4ms)[0m  [1m[34mSELECT "produtos".* FROM "produtos" WHERE "produtos"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/produtos_controller.rb:39:in `set_product'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/produtos_controller.rb:25:in `update'
+  [1m[36mProduto Update (1.7ms)[0m  [1m[33mUPDATE "produtos" SET "peso" = ?, "updated_at" = ? WHERE "produtos"."id" = ?[0m  [["peso", 2.0], ["updated_at", "2024-11-26 14:57:38.468433"], ["id", 1]]
+  ↳ app/controllers/produtos_controller.rb:25:in `update'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/produtos_controller.rb:25:in `update'
+Completed 200 OK in 10ms (Views: 0.3ms | ActiveRecord: 2.7ms | Allocations: 2613)
+
+
+Started GET "/produtos/1" for 127.0.0.1 at 2024-11-26 11:58:00 -0300
+Processing by ProdutosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduto Load (1.4ms)[0m  [1m[34mSELECT "produtos".* FROM "produtos" WHERE "produtos"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/produtos_controller.rb:39:in `set_product'
+Completed 200 OK in 4ms (Views: 0.4ms | ActiveRecord: 1.4ms | Allocations: 615)
+
+
+Started DELETE "/produtos/3" for 127.0.0.1 at 2024-11-26 11:59:00 -0300
+Processing by ProdutosController#destroy as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mProduto Load (0.2ms)[0m  [1m[34mSELECT "produtos".* FROM "produtos" WHERE "produtos"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/produtos_controller.rb:39:in `set_product'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/produtos_controller.rb:33:in `destroy'
+  [1m[36mProduto Destroy (1.8ms)[0m  [1m[31mDELETE FROM "produtos" WHERE "produtos"."id" = ?[0m  [["id", 3]]
+  ↳ app/controllers/produtos_controller.rb:33:in `destroy'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/produtos_controller.rb:33:in `destroy'
+No template found for ProdutosController#destroy, rendering head :no_content
+Completed 204 No Content in 8ms (ActiveRecord: 2.5ms | Allocations: 2281)
+
+
+Started GET "/produtos" for 127.0.0.1 at 2024-11-26 11:59:04 -0300
+Processing by ProdutosController#index as */*
+  [1m[36mProduto Load (0.8ms)[0m  [1m[34mSELECT "produtos".* FROM "produtos"[0m
+  ↳ app/controllers/produtos_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.8ms | Allocations: 812)
+
+
+Started GET "/produtos" for 127.0.0.1 at 2024-11-26 11:59:16 -0300
+Processing by ProdutosController#index as HTML
+  [1m[36mProduto Load (0.5ms)[0m  [1m[34mSELECT "produtos".* FROM "produtos"[0m
+  ↳ app/controllers/produtos_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.5ms | Allocations: 811)
+
+
+Started GET "/empresas" for 127.0.0.1 at 2024-11-26 12:00:41 -0300
+Processing by EmpresasController#index as HTML
+  [1m[36mEmpresa Load (0.4ms)[0m  [1m[34mSELECT "empresas".* FROM "empresas"[0m
+  ↳ app/controllers/empresas_controller.rb:7:in `index'
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.4ms | Allocations: 741)
+
+
+Started GET "/funcionarios" for 127.0.0.1 at 2024-11-26 12:02:16 -0300
+Processing by FuncionariosController#index as HTML
+  [1m[36mFuncionario Load (0.4ms)[0m  [1m[34mSELECT "funcionarios".* FROM "funcionarios"[0m
+  ↳ app/controllers/funcionarios_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.4ms | Allocations: 800)
+
+
+Started POST "/funcionarios" for 127.0.0.1 at 2024-11-26 12:02:47 -0300
+Processing by FuncionariosController#create as */*
+  Parameters: {"produto"=>{"id_produto"=>1, "tipo"=>"Eletrônico", "peso"=>1.5, "nome"=>"Smartphone"}, "funcionario"=>{}}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 492)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: funcionario):
+  
+app/controllers/funcionarios_controller.rb:49:in `funcionario_params'
+app/controllers/funcionarios_controller.rb:17:in `create'
+Started GET "/empresas" for 127.0.0.1 at 2024-11-26 12:03:23 -0300
+Processing by EmpresasController#index as HTML
+  [1m[36mEmpresa Load (0.3ms)[0m  [1m[34mSELECT "empresas".* FROM "empresas"[0m
+  ↳ app/controllers/empresas_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.3ms | Allocations: 735)
+
+
+Started POST "/funcionarios" for 127.0.0.1 at 2024-11-26 12:05:17 -0300
+Processing by FuncionariosController#create as */*
+  Parameters: {"funcionarios"=>{"id_funcionario"=>1, "id_empresa"=>"2", "cpf"=>"394.256.553-31", "nome"=>"Lionel Ronaldo Jr", "endereco"=>"Rua Dinamarca, 123"}, "funcionario"=>{}}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 470)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: funcionario
+Did you mean?  funcionarios):
+  
+app/controllers/funcionarios_controller.rb:49:in `funcionario_params'
+app/controllers/funcionarios_controller.rb:17:in `create'
+Started POST "/funcionarios" for 127.0.0.1 at 2024-11-26 12:05:36 -0300
+Processing by FuncionariosController#create as */*
+  Parameters: {"funcionarios"=>{"id_funcionario"=>1, "empresa_id"=>2, "cpf"=>"394.256.553-31", "nome"=>"Lionel Ronaldo Jr", "endereco"=>"Rua Dinamarca, 123"}, "funcionario"=>{}}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 467)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: funcionario
+Did you mean?  funcionarios):
+  
+app/controllers/funcionarios_controller.rb:49:in `funcionario_params'
+app/controllers/funcionarios_controller.rb:17:in `create'
+Started POST "/funcionarios" for 127.0.0.1 at 2024-11-26 12:06:11 -0300
+Processing by FuncionariosController#create as */*
+  Parameters: {"funcionario"=>{"id_funcionario"=>1, "empresa_id"=>2, "cpf"=>"394.256.553-31", "nome"=>"Lionel Ronaldo Jr", "endereco"=>"Rua Dinamarca, 123"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/funcionarios_controller.rb:18:in `create'
+  [1m[36mEmpresa Load (1.5ms)[0m  [1m[34mSELECT "empresas".* FROM "empresas" WHERE "empresas"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/funcionarios_controller.rb:18:in `create'
+  [1m[36mFuncionario Create (0.4ms)[0m  [1m[32mINSERT INTO "funcionarios" ("id_funcionario", "created_at", "updated_at", "empresa_id", "nome", "cpf", "endereco") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["id_funcionario", 1], ["created_at", "2024-11-26 15:06:11.838629"], ["updated_at", "2024-11-26 15:06:11.838629"], ["empresa_id", 2], ["nome", "Lionel Ronaldo Jr"], ["cpf", "394.256.553-31"], ["endereco", "Rua Dinamarca, 123"]]
+  ↳ app/controllers/funcionarios_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/funcionarios_controller.rb:18:in `create'
+Completed 201 Created in 36ms (Views: 0.4ms | ActiveRecord: 2.5ms | Allocations: 22954)
+
+
+Started GET "/funcionarios" for 127.0.0.1 at 2024-11-26 12:06:14 -0300
+Processing by FuncionariosController#index as HTML
+  [1m[36mFuncionario Load (0.8ms)[0m  [1m[34mSELECT "funcionarios".* FROM "funcionarios"[0m
+  ↳ app/controllers/funcionarios_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.8ms | Allocations: 755)
+
+
+Started POST "/funcionarios" for 127.0.0.1 at 2024-11-26 12:06:29 -0300
+Processing by FuncionariosController#create as */*
+  Parameters: {"funcionario"=>{"id_funcionario"=>1, "empresa_id"=>3, "cpf"=>"394.256.553-31", "nome"=>"Lionel Ronaldo Jr", "endereco"=>"Rua Dinamarca, 123"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/funcionarios_controller.rb:18:in `create'
+  [1m[36mEmpresa Load (1.5ms)[0m  [1m[34mSELECT "empresas".* FROM "empresas" WHERE "empresas"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/funcionarios_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/funcionarios_controller.rb:18:in `create'
+Completed 422 Unprocessable Content in 6ms (Views: 0.5ms | ActiveRecord: 1.7ms | Allocations: 3121)
+
+
+Started POST "/funcionarios" for 127.0.0.1 at 2024-11-26 12:06:37 -0300
+Processing by FuncionariosController#create as */*
+  Parameters: {"funcionario"=>{"id_funcionario"=>1, "empresa_id"=>1, "cpf"=>"394.256.553-31", "nome"=>"Lionel Ronaldo Jr", "endereco"=>"Rua Dinamarca, 123"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/funcionarios_controller.rb:18:in `create'
+  [1m[36mEmpresa Load (1.3ms)[0m  [1m[34mSELECT "empresas".* FROM "empresas" WHERE "empresas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/funcionarios_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/funcionarios_controller.rb:18:in `create'
+Completed 422 Unprocessable Content in 5ms (Views: 0.3ms | ActiveRecord: 1.5ms | Allocations: 2753)
+
+
+Started POST "/funcionarios" for 127.0.0.1 at 2024-11-26 12:06:46 -0300
+Processing by FuncionariosController#create as */*
+  Parameters: {"funcionario"=>{"id_funcionario"=>1, "empresa_id"=>2, "cpf"=>"394.256.553-31", "nome"=>"Lionel Ronaldo Jr", "endereco"=>"Rua Dinamarca, 123"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/funcionarios_controller.rb:18:in `create'
+  [1m[36mEmpresa Load (1.2ms)[0m  [1m[34mSELECT "empresas".* FROM "empresas" WHERE "empresas"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/funcionarios_controller.rb:18:in `create'
+  [1m[36mFuncionario Create (0.2ms)[0m  [1m[32mINSERT INTO "funcionarios" ("id_funcionario", "created_at", "updated_at", "empresa_id", "nome", "cpf", "endereco") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["id_funcionario", 1], ["created_at", "2024-11-26 15:06:46.230339"], ["updated_at", "2024-11-26 15:06:46.230339"], ["empresa_id", 2], ["nome", "Lionel Ronaldo Jr"], ["cpf", "394.256.553-31"], ["endereco", "Rua Dinamarca, 123"]]
+  ↳ app/controllers/funcionarios_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/funcionarios_controller.rb:18:in `create'
+Completed 201 Created in 8ms (Views: 0.3ms | ActiveRecord: 2.9ms | Allocations: 2932)
+
+
+Started GET "/funcionarios" for 127.0.0.1 at 2024-11-26 12:06:51 -0300
+Processing by FuncionariosController#index as HTML
+  [1m[36mFuncionario Load (0.5ms)[0m  [1m[34mSELECT "funcionarios".* FROM "funcionarios"[0m
+  ↳ app/controllers/funcionarios_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.5ms | Allocations: 813)
+
+
+Started GET "/funcionarios" for 127.0.0.1 at 2024-11-26 12:07:28 -0300
+Processing by FuncionariosController#index as */*
+  [1m[36mFuncionario Load (0.2ms)[0m  [1m[34mSELECT "funcionarios".* FROM "funcionarios"[0m
+  ↳ app/controllers/funcionarios_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.2ms | Allocations: 814)
+
+
+Started GET "/funcionarios/2" for 127.0.0.1 at 2024-11-26 12:07:57 -0300
+Processing by FuncionariosController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mFuncionario Load (0.5ms)[0m  [1m[34mSELECT "funcionarios".* FROM "funcionarios" WHERE "funcionarios"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/funcionarios_controller.rb:44:in `set_funcionario'
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 1209)
+
+
+Started PUT "/funcionarios/2" for 127.0.0.1 at 2024-11-26 12:09:23 -0300
+Processing by FuncionariosController#update as */*
+  Parameters: {"funcionario"=>{"id_funcionario"=>2, "nome"=>"Karim Bale", "cpf"=>"124.576.521-34", "endereco"=>"Rua França, 43"}, "id"=>"2"}
+  [1m[36mFuncionario Load (0.2ms)[0m  [1m[34mSELECT "funcionarios".* FROM "funcionarios" WHERE "funcionarios"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/funcionarios_controller.rb:44:in `set_funcionario'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/funcionarios_controller.rb:27:in `update'
+  [1m[36mFuncionario Update (1.3ms)[0m  [1m[33mUPDATE "funcionarios" SET "id_funcionario" = ?, "updated_at" = ?, "nome" = ?, "cpf" = ?, "endereco" = ? WHERE "funcionarios"."id" = ?[0m  [["id_funcionario", 2], ["updated_at", "2024-11-26 15:09:23.076527"], ["nome", "Karim Bale"], ["cpf", "124.576.521-34"], ["endereco", "Rua França, 43"], ["id", 2]]
+  ↳ app/controllers/funcionarios_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/funcionarios_controller.rb:27:in `update'
+Completed 200 OK in 7ms (Views: 0.4ms | ActiveRecord: 2.2ms | Allocations: 2589)
+
+
+Started GET "/funcionarios" for 127.0.0.1 at 2024-11-26 12:09:26 -0300
+Processing by FuncionariosController#index as HTML
+  [1m[36mFuncionario Load (0.7ms)[0m  [1m[34mSELECT "funcionarios".* FROM "funcionarios"[0m
+  ↳ app/controllers/funcionarios_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.7ms | Allocations: 815)
+
+
+Started POST "/funcionarios" for 127.0.0.1 at 2024-11-26 12:09:57 -0300
+Processing by FuncionariosController#create as */*
+  Parameters: {"funcionario"=>{"id_funcionario"=>1, "empresa_id"=>2, "cpf"=>"394.256.553-31", "nome"=>"Lionel Ronaldo Jr", "endereco"=>"Rua Dinamarca, 123"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/funcionarios_controller.rb:18:in `create'
+  [1m[36mEmpresa Load (1.6ms)[0m  [1m[34mSELECT "empresas".* FROM "empresas" WHERE "empresas"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/funcionarios_controller.rb:18:in `create'
+  [1m[36mFuncionario Create (0.2ms)[0m  [1m[32mINSERT INTO "funcionarios" ("id_funcionario", "created_at", "updated_at", "empresa_id", "nome", "cpf", "endereco") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["id_funcionario", 1], ["created_at", "2024-11-26 15:09:57.595572"], ["updated_at", "2024-11-26 15:09:57.595572"], ["empresa_id", 2], ["nome", "Lionel Ronaldo Jr"], ["cpf", "394.256.553-31"], ["endereco", "Rua Dinamarca, 123"]]
+  ↳ app/controllers/funcionarios_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/funcionarios_controller.rb:18:in `create'
+Completed 201 Created in 7ms (Views: 0.4ms | ActiveRecord: 2.3ms | Allocations: 2934)
+
+
+Started GET "/funcionarios" for 127.0.0.1 at 2024-11-26 12:09:59 -0300
+Processing by FuncionariosController#index as HTML
+  [1m[36mFuncionario Load (0.7ms)[0m  [1m[34mSELECT "funcionarios".* FROM "funcionarios"[0m
+  ↳ app/controllers/funcionarios_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.7ms | Allocations: 894)
+
+
+Started GET "/funcionarios/3" for 127.0.0.1 at 2024-11-26 12:10:09 -0300
+Processing by FuncionariosController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mFuncionario Load (0.4ms)[0m  [1m[34mSELECT "funcionarios".* FROM "funcionarios" WHERE "funcionarios"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/funcionarios_controller.rb:44:in `set_funcionario'
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 617)
+
+
+Started DELETE "/funcionarios/3" for 127.0.0.1 at 2024-11-26 12:10:15 -0300
+Processing by FuncionariosController#destroy as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mFuncionario Load (0.4ms)[0m  [1m[34mSELECT "funcionarios".* FROM "funcionarios" WHERE "funcionarios"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/funcionarios_controller.rb:44:in `set_funcionario'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/funcionarios_controller.rb:36:in `destroy'
+  [1m[36mFuncionario Destroy (1.2ms)[0m  [1m[31mDELETE FROM "funcionarios" WHERE "funcionarios"."id" = ?[0m  [["id", 3]]
+  ↳ app/controllers/funcionarios_controller.rb:36:in `destroy'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/funcionarios_controller.rb:36:in `destroy'
+Completed 204 No Content in 6ms (ActiveRecord: 2.1ms | Allocations: 2023)
+
+
+Started GET "/funcionarios/3//" for 127.0.0.1 at 2024-11-26 12:10:19 -0300
+Processing by FuncionariosController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mFuncionario Load (0.4ms)[0m  [1m[34mSELECT "funcionarios".* FROM "funcionarios" WHERE "funcionarios"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/funcionarios_controller.rb:44:in `set_funcionario'
+Completed 404 Not Found in 2ms (ActiveRecord: 0.4ms | Allocations: 894)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Funcionario with 'id'=3):
+  
+app/controllers/funcionarios_controller.rb:44:in `set_funcionario'
+Started GET "/funcionarios/" for 127.0.0.1 at 2024-11-26 12:10:23 -0300
+Processing by FuncionariosController#index as HTML
+  [1m[36mFuncionario Load (0.2ms)[0m  [1m[34mSELECT "funcionarios".* FROM "funcionarios"[0m
+  ↳ app/controllers/funcionarios_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.2ms | Allocations: 812)
+
+
+Started GET "/pagamentos/" for 127.0.0.1 at 2024-11-26 12:12:56 -0300
+Processing by PagamentosController#index as HTML
+  [1m[36mPagamento Load (0.3ms)[0m  [1m[34mSELECT "pagamentos".* FROM "pagamentos"[0m
+  ↳ app/controllers/pagamentos_controller.rb:7:in `index'
+Completed 200 OK in 13ms (Views: 1.4ms | ActiveRecord: 0.3ms | Allocations: 4748)
+
+
+Started GET "/pagamentos" for 127.0.0.1 at 2024-11-26 12:15:14 -0300
+Processing by PagamentosController#index as HTML
+  [1m[36mPagamento Load (0.2ms)[0m  [1m[34mSELECT "pagamentos".* FROM "pagamentos"[0m
+  ↳ app/controllers/pagamentos_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.2ms | Allocations: 645)
+
+
+Started GET "/empresas" for 127.0.0.1 at 2024-11-26 12:17:00 -0300
+Processing by EmpresasController#index as */*
+  [1m[36mEmpresa Load (0.2ms)[0m  [1m[34mSELECT "empresas".* FROM "empresas"[0m
+  ↳ app/controllers/empresas_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.2ms | Allocations: 739)
+
+
+Started POST "/empresas" for 127.0.0.1 at 2024-11-26 12:18:38 -0300
+Processing by EmpresasController#create as */*
+  Parameters: {"empresa"=>{"id_empresa"=>2, "endereco"=>"Rua Kiev, 142", "cnpj"=>"45675678908767", "telefone"=>"(11) 98990-3214", "nome"=>"Reciclagem Top Demais"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/empresas_controller.rb:18:in `create'
+  [1m[36mEmpresa Create (1.4ms)[0m  [1m[32mINSERT INTO "empresas" ("id_empresa", "endereco", "cnpj", "telefone", "nome", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["id_empresa", 2], ["endereco", "Rua Kiev, 142"], ["cnpj", "45675678908767"], ["telefone", "(11) 98990-3214"], ["nome", "Reciclagem Top Demais"], ["created_at", "2024-11-26 15:18:38.300853"], ["updated_at", "2024-11-26 15:18:38.300853"]]
+  ↳ app/controllers/empresas_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/empresas_controller.rb:18:in `create'
+Completed 201 Created in 5ms (Views: 0.3ms | ActiveRecord: 2.0ms | Allocations: 2125)
+
+
+Started GET "/empresas" for 127.0.0.1 at 2024-11-26 12:18:40 -0300
+Processing by EmpresasController#index as */*
+  [1m[36mEmpresa Load (0.7ms)[0m  [1m[34mSELECT "empresas".* FROM "empresas"[0m
+  ↳ app/controllers/empresas_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.7ms | Allocations: 818)
+
+
+Started GET "/empresas" for 127.0.0.1 at 2024-11-26 12:19:08 -0300
+Processing by EmpresasController#index as HTML
+  [1m[36mEmpresa Load (0.2ms)[0m  [1m[34mSELECT "empresas".* FROM "empresas"[0m
+  ↳ app/controllers/empresas_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.2ms | Allocations: 817)
+
+
+Started POST "/pagamentos" for 127.0.0.1 at 2024-11-26 12:20:04 -0300
+Processing by PagamentosController#create as */*
+  Parameters: {"pagamentos"=>{"tipo"=>"Dinheiro", "venda_id_empresa"=>2, "compra_id_empresa"=>3}, "pagamento"=>{}}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.4ms | Allocations: 477)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: pagamento
+Did you mean?  pagamentos):
+  
+app/controllers/pagamentos_controller.rb:49:in `pagamento_params'
+app/controllers/pagamentos_controller.rb:17:in `create'
+Started POST "/pagamentos" for 127.0.0.1 at 2024-11-26 12:20:10 -0300
+Processing by PagamentosController#create as */*
+  Parameters: {"pagamento"=>{"tipo"=>"Dinheiro", "venda_id_empresa"=>2, "compra_id_empresa"=>3}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/pagamentos_controller.rb:18:in `create'
+  [1m[36mPagamento Create (2.3ms)[0m  [1m[32mINSERT INTO "pagamentos" ("tipo", "created_at", "updated_at", "venda_id_empresa", "compra_id_empresa") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["tipo", "Dinheiro"], ["created_at", "2024-11-26 15:20:10.956842"], ["updated_at", "2024-11-26 15:20:10.956842"], ["venda_id_empresa", 2], ["compra_id_empresa", 3]]
+  ↳ app/controllers/pagamentos_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/pagamentos_controller.rb:18:in `create'
+Completed 201 Created in 13ms (Views: 0.3ms | ActiveRecord: 3.6ms | Allocations: 17738)
+
+
+Started POST "/pagamentos" for 127.0.0.1 at 2024-11-26 12:20:29 -0300
+Processing by PagamentosController#create as */*
+  Parameters: {"pagamento"=>{"tipo"=>"Pix", "venda_id_empresa"=>3, "compra_id_empresa"=>2}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/pagamentos_controller.rb:18:in `create'
+  [1m[36mPagamento Create (1.8ms)[0m  [1m[32mINSERT INTO "pagamentos" ("tipo", "created_at", "updated_at", "venda_id_empresa", "compra_id_empresa") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["tipo", "Pix"], ["created_at", "2024-11-26 15:20:29.850576"], ["updated_at", "2024-11-26 15:20:29.850576"], ["venda_id_empresa", 3], ["compra_id_empresa", 2]]
+  ↳ app/controllers/pagamentos_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/pagamentos_controller.rb:18:in `create'
+Completed 201 Created in 6ms (Views: 0.3ms | ActiveRecord: 2.5ms | Allocations: 2055)
+
+
+Started POST "/pagamentos" for 127.0.0.1 at 2024-11-26 12:20:34 -0300
+Processing by PagamentosController#create as */*
+  Parameters: {"pagamento"=>{"tipo"=>"Pix", "venda_id_empresa"=>5, "compra_id_empresa"=>2}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/pagamentos_controller.rb:18:in `create'
+  [1m[36mPagamento Create (2.5ms)[0m  [1m[32mINSERT INTO "pagamentos" ("tipo", "created_at", "updated_at", "venda_id_empresa", "compra_id_empresa") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["tipo", "Pix"], ["created_at", "2024-11-26 15:20:34.724316"], ["updated_at", "2024-11-26 15:20:34.724316"], ["venda_id_empresa", 5], ["compra_id_empresa", 2]]
+  ↳ app/controllers/pagamentos_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/pagamentos_controller.rb:18:in `create'
+Completed 201 Created in 6ms (Views: 0.3ms | ActiveRecord: 3.1ms | Allocations: 2055)
+
+
+Started GET "/pagamentos" for 127.0.0.1 at 2024-11-26 12:20:39 -0300
+Processing by PagamentosController#index as HTML
+  [1m[36mPagamento Load (0.6ms)[0m  [1m[34mSELECT "pagamentos".* FROM "pagamentos"[0m
+  ↳ app/controllers/pagamentos_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.6ms | Allocations: 895)
+
+
+Started GET "/pagamentos/3" for 127.0.0.1 at 2024-11-26 12:22:33 -0300
+Processing by PagamentosController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPagamento Load (0.3ms)[0m  [1m[34mSELECT "pagamentos".* FROM "pagamentos" WHERE "pagamentos"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/pagamentos_controller.rb:44:in `set_pagamento'
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 1210)
+
+
+Started DELETE "/pagamentos/3" for 127.0.0.1 at 2024-11-26 12:22:37 -0300
+Processing by PagamentosController#destroy as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mPagamento Load (0.2ms)[0m  [1m[34mSELECT "pagamentos".* FROM "pagamentos" WHERE "pagamentos"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/pagamentos_controller.rb:44:in `set_pagamento'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/pagamentos_controller.rb:36:in `destroy'
+  [1m[36mPagamento Destroy (1.5ms)[0m  [1m[31mDELETE FROM "pagamentos" WHERE "pagamentos"."id" = ?[0m  [["id", 3]]
+  ↳ app/controllers/pagamentos_controller.rb:36:in `destroy'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/pagamentos_controller.rb:36:in `destroy'
+Completed 204 No Content in 6ms (ActiveRecord: 2.1ms | Allocations: 2024)
+
+
+Started GET "/pagamentos" for 127.0.0.1 at 2024-11-26 12:22:41 -0300
+Processing by PagamentosController#index as HTML
+  [1m[36mPagamento Load (0.7ms)[0m  [1m[34mSELECT "pagamentos".* FROM "pagamentos"[0m
+  ↳ app/controllers/pagamentos_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.7ms | Allocations: 801)
+
+
+  [1m[36mActiveRecord::InternalMetadata Load (2.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateEstoque (20241126174401)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "estoques" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_estoque" integer, "endereço" varchar, "empresa_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_f91c05fd67"
+FOREIGN KEY ("empresa_id")
+  REFERENCES "empresas" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_estoques_on_empresa_id" ON "estoques" ("empresa_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241126174401') RETURNING "version"[0m
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (3.4ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddIdEstoqueOnProduto (20241126175034)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aprodutos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_produto" integer DEFAULT NULL, "tipo" varchar DEFAULT NULL, "peso" float DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar DEFAULT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aprodutos" ("id","id_produto","tipo","peso","created_at","updated_at","nome")
+                     SELECT "id","id_produto","tipo","peso","created_at","updated_at","nome" FROM "produtos"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "produtos"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "produtos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_produto" integer DEFAULT NULL, "tipo" varchar DEFAULT NULL, "peso" float DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar DEFAULT NULL, CONSTRAINT "fk_rails_7c07f22feb"
+FOREIGN KEY ("estoque_id")
+  REFERENCES "estoques" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.9ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddIdEstoqueOnProduto (20241126175034)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.0ms)[0m  [1m[35mALTER TABLE "produtos" ADD "estoque_id" integer[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_produtos_on_estoque_id" ON "produtos" ("estoque_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aprodutos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_produto" integer DEFAULT NULL, "tipo" varchar DEFAULT NULL, "peso" float DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar DEFAULT NULL, "estoque_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aprodutos_on_estoque_id" ON "aprodutos" ("estoque_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aprodutos" ("id","id_produto","tipo","peso","created_at","updated_at","nome","estoque_id")
+                     SELECT "id","id_produto","tipo","peso","created_at","updated_at","nome","estoque_id" FROM "produtos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "produtos"[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "produtos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_produto" integer DEFAULT NULL, "tipo" varchar DEFAULT NULL, "peso" float DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar DEFAULT NULL, "estoque_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_7c07f22feb"
+FOREIGN KEY ("estoque_id")
+  REFERENCES "estoques" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_produtos_on_estoque_id" ON "produtos" ("estoque_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "produtos" ("id","id_produto","tipo","peso","created_at","updated_at","nome","estoque_id")
+                     SELECT "id","id_produto","tipo","peso","created_at","updated_at","nome","estoque_id" FROM "aprodutos"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "aprodutos"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241126175034') RETURNING "version"[0m
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.6ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeleteEmpresaIdOnFuncionarios (20241126180010)
+  [1m[36mActiveRecord::InternalMetadata Load (2.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeleteEmpresaIdOnFuncionarios (20241126180010)
+  [1m[36mActiveRecord::InternalMetadata Load (1.9ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeleteEmpresaIdOnFuncionarios (20241126180010)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "afuncionarios" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_funcionario" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "empresa_id" integer DEFAULT NULL, "nome" varchar DEFAULT NULL, "cpf" varchar DEFAULT NULL, "endereco" varchar DEFAULT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "afuncionarios" ("id","id_funcionario","created_at","updated_at","empresa_id","nome","cpf","endereco")
+                     SELECT "id","id_funcionario","created_at","updated_at","empresa_id","nome","cpf","endereco" FROM "funcionarios"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "funcionarios"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "funcionarios" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_funcionario" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar DEFAULT NULL, "cpf" varchar DEFAULT NULL, "endereco" varchar DEFAULT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "funcionarios" ("id","id_funcionario","created_at","updated_at","nome","cpf","endereco")
+                     SELECT "id","id_funcionario","created_at","updated_at","nome","cpf","endereco" FROM "afuncionarios"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "afuncionarios"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241126180010') RETURNING "version"[0m
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.5ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddIdEmpresaOnFuncionario (20241126180439)
+  [1m[36mActiveRecord::InternalMetadata Load (1.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddIdEmpresaOnFuncionario (20241126180439)
+  [1m[36mActiveRecord::InternalMetadata Load (1.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddIdEmpresaOnFuncionario (20241126180439)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.5ms)[0m  [1m[35mALTER TABLE "funcionarios" ADD "empresas_id" integer[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_funcionarios_on_empresas_id" ON "funcionarios" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "afuncionarios" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_funcionario" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar DEFAULT NULL, "cpf" varchar DEFAULT NULL, "endereco" varchar DEFAULT NULL, "empresas_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_afuncionarios_on_empresas_id" ON "afuncionarios" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "afuncionarios" ("id","id_funcionario","created_at","updated_at","nome","cpf","endereco","empresas_id")
+                     SELECT "id","id_funcionario","created_at","updated_at","nome","cpf","endereco","empresas_id" FROM "funcionarios"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "funcionarios"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "funcionarios" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_funcionario" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar DEFAULT NULL, "cpf" varchar DEFAULT NULL, "endereco" varchar DEFAULT NULL, "empresas_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_48f062a7b6"
+FOREIGN KEY ("empresas_id")
+  REFERENCES "empresas" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_funcionarios_on_empresas_id" ON "funcionarios" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "funcionarios" ("id","id_funcionario","created_at","updated_at","nome","cpf","endereco","empresas_id")
+                     SELECT "id","id_funcionario","created_at","updated_at","nome","cpf","endereco","empresas_id" FROM "afuncionarios"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "afuncionarios"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241126180439') RETURNING "version"[0m
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.7ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to RemoveColumnsFromPagamento (20241126180818)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "apagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "venda_id_empresa" integer DEFAULT NULL, "compra_id_empresa" integer DEFAULT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "apagamentos" ("id","tipo","created_at","updated_at","venda_id_empresa","compra_id_empresa")
+                     SELECT "id","tipo","created_at","updated_at","venda_id_empresa","compra_id_empresa" FROM "pagamentos"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "compra_id_empresa" integer DEFAULT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "pagamentos" ("id","tipo","created_at","updated_at","compra_id_empresa")
+                     SELECT "id","tipo","created_at","updated_at","compra_id_empresa" FROM "apagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "apagamentos"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "apagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "compra_id_empresa" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "apagamentos" ("id","tipo","created_at","updated_at","compra_id_empresa")
+                     SELECT "id","tipo","created_at","updated_at","compra_id_empresa" FROM "pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "pagamentos" ("id","tipo","created_at","updated_at")
+                     SELECT "id","tipo","created_at","updated_at" FROM "apagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "apagamentos"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241126180818') RETURNING "version"[0m
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddForeignKeyInPagamento (20241126181023)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "pagamentos" ADD "empresas_id" integer[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_pagamentos_on_empresas_id" ON "pagamentos" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "apagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "empresas_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_apagamentos_on_empresas_id" ON "apagamentos" ("empresas_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "apagamentos" ("id","tipo","created_at","updated_at","empresas_id")
+                     SELECT "id","tipo","created_at","updated_at","empresas_id" FROM "pagamentos"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "empresas_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_a7d70e99ba"
+FOREIGN KEY ("empresas_id")
+  REFERENCES "empresas" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_pagamentos_on_empresas_id" ON "pagamentos" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "pagamentos" ("id","tipo","created_at","updated_at","empresas_id")
+                     SELECT "id","tipo","created_at","updated_at","empresas_id" FROM "apagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "apagamentos"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "pagamentos" ADD "empresas_id" integer[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddForeignKeyInPagamento (20241126181023)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "pagamentos" ADD "empresas_id" integer[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_pagamentos_on_empresas_id" ON "pagamentos" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "apagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "empresas_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_apagamentos_on_empresas_id" ON "apagamentos" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "apagamentos" ("id","tipo","created_at","updated_at","empresas_id")
+                     SELECT "id","tipo","created_at","updated_at","empresas_id" FROM "pagamentos"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "empresas_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_a7d70e99ba"
+FOREIGN KEY ("empresas_id")
+  REFERENCES "empresas" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_pagamentos_on_empresas_id" ON "pagamentos" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "pagamentos" ("id","tipo","created_at","updated_at","empresas_id")
+                     SELECT "id","tipo","created_at","updated_at","empresas_id" FROM "apagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "apagamentos"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241126181023') RETURNING "version"[0m
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2024-11-26 15:19:37 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/tilevs/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/railties-7.1.5/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/tilevs/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/railties-7.1.5/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.8ms | Allocations: 525)
+Completed 200 OK in 2836ms (Views: 34.9ms | ActiveRecord: 0.0ms | Allocations: 287223)
+
+
+Started GET "/produtos" for 127.0.0.1 at 2024-11-26 15:19:46 -0300
+Processing by ProdutosController#index as HTML
+  [1m[36mProduto Load (2.1ms)[0m  [1m[34mSELECT "produtos".* FROM "produtos"[0m
+  ↳ app/controllers/produtos_controller.rb:7:in `index'
+Completed 200 OK in 180ms (Views: -3.2ms | ActiveRecord: 47.5ms | Allocations: 33471)
+
+

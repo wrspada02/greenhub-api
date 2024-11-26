@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   resources :funcionarios
   resources :pagamentos
   resources :produto_pagamentos
+  resources :estoques
 end

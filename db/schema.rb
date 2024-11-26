@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_20_230449) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_26_181023) do
   create_table "empresas", force: :cascade do |t|
     t.integer "id_empresa"
     t.string "endereco"
@@ -21,22 +21,32 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_20_230449) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "estoques", force: :cascade do |t|
+    t.integer "id_estoque"
+    t.string "endereço"
+    t.integer "empresa_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["empresa_id"], name: "index_estoques_on_empresa_id"
+  end
+
   create_table "funcionarios", force: :cascade do |t|
     t.integer "id_funcionario"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "empresa_id"
     t.string "nome"
     t.string "cpf"
     t.string "endereco"
+    t.integer "empresas_id"
+    t.index ["empresas_id"], name: "index_funcionarios_on_empresas_id"
   end
 
   create_table "pagamentos", force: :cascade do |t|
     t.string "tipo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "venda_id_empresa"
-    t.integer "compra_id_empresa"
+    t.integer "empresas_id"
+    t.index ["empresas_id"], name: "index_pagamentos_on_empresas_id"
   end
 
   create_table "produto_pagamentos", force: :cascade do |t|
@@ -56,8 +66,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_20_230449) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "nome"
+    t.integer "estoque_id"
+    t.index ["estoque_id"], name: "index_produtos_on_estoque_id"
   end
 
+  add_foreign_key "estoques", "empresas"
+  add_foreign_key "funcionarios", "empresas", column: "empresas_id"
+  add_foreign_key "pagamentos", "empresas", column: "empresas_id"
   add_foreign_key "produto_pagamentos", "pagamentos"
   add_foreign_key "produto_pagamentos", "produtos"
+  add_foreign_key "produtos", "estoques"
 end
