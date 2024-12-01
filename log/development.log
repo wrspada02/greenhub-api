@@ -4260,3 +4260,1593 @@ Processing by ProdutosController#index as HTML
 Completed 200 OK in 180ms (Views: -3.2ms | ActiveRecord: 47.5ms | Allocations: 33471)
 
 
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "empresas"[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "empresas" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_empresa" integer, "endereco" varchar, "cnpj" varchar, "telefone" varchar, "nome" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "estoques"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "estoques" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_estoque" integer, "endereço" varchar, "empresa_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_estoques_on_empresa_id" ON "estoques" ("empresa_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "funcionarios"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "funcionarios" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_funcionario" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar, "cpf" varchar, "endereco" varchar, "empresas_id" integer)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_funcionarios_on_empresas_id" ON "funcionarios" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "empresas_id" integer)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_pagamentos_on_empresas_id" ON "pagamentos" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "produto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "produto_pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quantidade" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "pagamento_id" integer, "produto_id" integer)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_produto_pagamentos_on_pagamento_id" ON "produto_pagamentos" ("pagamento_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_produto_pagamentos_on_produto_id" ON "produto_pagamentos" ("produto_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "produtos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "produtos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_produto" integer, "tipo" varchar, "peso" float, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar, "estoque_id" integer)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_produtos_on_estoque_id" ON "produtos" ("estoque_id")[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aestoques" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_estoque" integer DEFAULT NULL, "endereço" varchar DEFAULT NULL, "empresa_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aestoques_on_empresa_id" ON "aestoques" ("empresa_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aestoques" ("id","id_estoque","endereço","empresa_id","created_at","updated_at")
+                     SELECT "id","id_estoque","endereço","empresa_id","created_at","updated_at" FROM "estoques"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "estoques"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "estoques" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_estoque" integer DEFAULT NULL, "endereço" varchar DEFAULT NULL, "empresa_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_f91c05fd67"
+FOREIGN KEY ("empresa_id")
+  REFERENCES "empresas" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_estoques_on_empresa_id" ON "estoques" ("empresa_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "estoques" ("id","id_estoque","endereço","empresa_id","created_at","updated_at")
+                     SELECT "id","id_estoque","endereço","empresa_id","created_at","updated_at" FROM "aestoques"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aestoques"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "afuncionarios" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_funcionario" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar DEFAULT NULL, "cpf" varchar DEFAULT NULL, "endereco" varchar DEFAULT NULL, "empresas_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_afuncionarios_on_empresas_id" ON "afuncionarios" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "afuncionarios" ("id","id_funcionario","created_at","updated_at","nome","cpf","endereco","empresas_id")
+                     SELECT "id","id_funcionario","created_at","updated_at","nome","cpf","endereco","empresas_id" FROM "funcionarios"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "funcionarios"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "funcionarios" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_funcionario" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar DEFAULT NULL, "cpf" varchar DEFAULT NULL, "endereco" varchar DEFAULT NULL, "empresas_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_48f062a7b6"
+FOREIGN KEY ("empresas_id")
+  REFERENCES "empresas" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_funcionarios_on_empresas_id" ON "funcionarios" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "funcionarios" ("id","id_funcionario","created_at","updated_at","nome","cpf","endereco","empresas_id")
+                     SELECT "id","id_funcionario","created_at","updated_at","nome","cpf","endereco","empresas_id" FROM "afuncionarios"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "afuncionarios"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "apagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "empresas_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_apagamentos_on_empresas_id" ON "apagamentos" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "apagamentos" ("id","tipo","created_at","updated_at","empresas_id")
+                     SELECT "id","tipo","created_at","updated_at","empresas_id" FROM "pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "empresas_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_a7d70e99ba"
+FOREIGN KEY ("empresas_id")
+  REFERENCES "empresas" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_pagamentos_on_empresas_id" ON "pagamentos" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "pagamentos" ("id","tipo","created_at","updated_at","empresas_id")
+                     SELECT "id","tipo","created_at","updated_at","empresas_id" FROM "apagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "apagamentos"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aproduto_pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quantidade" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "pagamento_id" integer DEFAULT NULL, "produto_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aproduto_pagamentos_on_produto_id" ON "aproduto_pagamentos" ("produto_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aproduto_pagamentos_on_pagamento_id" ON "aproduto_pagamentos" ("pagamento_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aproduto_pagamentos" ("id","quantidade","created_at","updated_at","pagamento_id","produto_id")
+                     SELECT "id","quantidade","created_at","updated_at","pagamento_id","produto_id" FROM "produto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "produto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "produto_pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quantidade" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "pagamento_id" integer DEFAULT NULL, "produto_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_066020e60a"
+FOREIGN KEY ("pagamento_id")
+  REFERENCES "pagamentos" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_produto_pagamentos_on_pagamento_id" ON "produto_pagamentos" ("pagamento_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_produto_pagamentos_on_produto_id" ON "produto_pagamentos" ("produto_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "produto_pagamentos" ("id","quantidade","created_at","updated_at","pagamento_id","produto_id")
+                     SELECT "id","quantidade","created_at","updated_at","pagamento_id","produto_id" FROM "aproduto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aproduto_pagamentos"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aproduto_pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quantidade" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "pagamento_id" integer DEFAULT NULL, "produto_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aproduto_pagamentos_on_produto_id" ON "aproduto_pagamentos" ("produto_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aproduto_pagamentos_on_pagamento_id" ON "aproduto_pagamentos" ("pagamento_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aproduto_pagamentos" ("id","quantidade","created_at","updated_at","pagamento_id","produto_id")
+                     SELECT "id","quantidade","created_at","updated_at","pagamento_id","produto_id" FROM "produto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "produto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "produto_pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quantidade" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "pagamento_id" integer DEFAULT NULL, "produto_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_066020e60a"
+FOREIGN KEY ("pagamento_id")
+  REFERENCES "pagamentos" ("id")
+, CONSTRAINT "fk_rails_12e40ef417"
+FOREIGN KEY ("produto_id")
+  REFERENCES "produtos" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_produto_pagamentos_on_pagamento_id" ON "produto_pagamentos" ("pagamento_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_produto_pagamentos_on_produto_id" ON "produto_pagamentos" ("produto_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "produto_pagamentos" ("id","quantidade","created_at","updated_at","pagamento_id","produto_id")
+                     SELECT "id","quantidade","created_at","updated_at","pagamento_id","produto_id" FROM "aproduto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aproduto_pagamentos"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aprodutos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_produto" integer DEFAULT NULL, "tipo" varchar DEFAULT NULL, "peso" float DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar DEFAULT NULL, "estoque_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aprodutos_on_estoque_id" ON "aprodutos" ("estoque_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aprodutos" ("id","id_produto","tipo","peso","created_at","updated_at","nome","estoque_id")
+                     SELECT "id","id_produto","tipo","peso","created_at","updated_at","nome","estoque_id" FROM "produtos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "produtos"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "produtos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_produto" integer DEFAULT NULL, "tipo" varchar DEFAULT NULL, "peso" float DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar DEFAULT NULL, "estoque_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_7c07f22feb"
+FOREIGN KEY ("estoque_id")
+  REFERENCES "estoques" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_produtos_on_estoque_id" ON "produtos" ("estoque_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "produtos" ("id","id_produto","tipo","peso","created_at","updated_at","nome","estoque_id")
+                     SELECT "id","id_produto","tipo","peso","created_at","updated_at","nome","estoque_id" FROM "aprodutos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aprodutos"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20241126181023)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20241126180818),
+(20241126180439),
+(20241126180010),
+(20241126175034),
+(20241126174401),
+(20241120230449),
+(20241120223710),
+(20241120182740),
+(20241120163629),
+(20241120163552),
+(20241120161143),
+(20241118234355),
+(20241106221206),
+(20241106214252),
+(20241105225925);[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2024-12-01 17:20:56.970192', '2024-12-01 17:20:56.970194') RETURNING "key"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('schema_sha1', '7e1f5ec604677acab67f85d6466f33d9d5705071', '2024-12-01 17:20:56.972231', '2024-12-01 17:20:56.972233') RETURNING "key"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "empresas"[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "empresas" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_empresa" integer, "endereco" varchar, "cnpj" varchar, "telefone" varchar, "nome" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "estoques"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "estoques" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_estoque" integer, "endereço" varchar, "empresa_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_estoques_on_empresa_id" ON "estoques" ("empresa_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "funcionarios"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "funcionarios" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_funcionario" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar, "cpf" varchar, "endereco" varchar, "empresas_id" integer)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_funcionarios_on_empresas_id" ON "funcionarios" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "empresas_id" integer)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_pagamentos_on_empresas_id" ON "pagamentos" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "produto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "produto_pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quantidade" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "pagamento_id" integer, "produto_id" integer)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_produto_pagamentos_on_pagamento_id" ON "produto_pagamentos" ("pagamento_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_produto_pagamentos_on_produto_id" ON "produto_pagamentos" ("produto_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "produtos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "produtos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_produto" integer, "tipo" varchar, "peso" float, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar, "estoque_id" integer)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_produtos_on_estoque_id" ON "produtos" ("estoque_id")[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aestoques" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_estoque" integer DEFAULT NULL, "endereço" varchar DEFAULT NULL, "empresa_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aestoques_on_empresa_id" ON "aestoques" ("empresa_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aestoques" ("id","id_estoque","endereço","empresa_id","created_at","updated_at")
+                     SELECT "id","id_estoque","endereço","empresa_id","created_at","updated_at" FROM "estoques"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "estoques"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "estoques" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_estoque" integer DEFAULT NULL, "endereço" varchar DEFAULT NULL, "empresa_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_f91c05fd67"
+FOREIGN KEY ("empresa_id")
+  REFERENCES "empresas" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_estoques_on_empresa_id" ON "estoques" ("empresa_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "estoques" ("id","id_estoque","endereço","empresa_id","created_at","updated_at")
+                     SELECT "id","id_estoque","endereço","empresa_id","created_at","updated_at" FROM "aestoques"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "aestoques"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "afuncionarios" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_funcionario" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar DEFAULT NULL, "cpf" varchar DEFAULT NULL, "endereco" varchar DEFAULT NULL, "empresas_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_afuncionarios_on_empresas_id" ON "afuncionarios" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "afuncionarios" ("id","id_funcionario","created_at","updated_at","nome","cpf","endereco","empresas_id")
+                     SELECT "id","id_funcionario","created_at","updated_at","nome","cpf","endereco","empresas_id" FROM "funcionarios"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "funcionarios"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "funcionarios" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_funcionario" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar DEFAULT NULL, "cpf" varchar DEFAULT NULL, "endereco" varchar DEFAULT NULL, "empresas_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_48f062a7b6"
+FOREIGN KEY ("empresas_id")
+  REFERENCES "empresas" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_funcionarios_on_empresas_id" ON "funcionarios" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "funcionarios" ("id","id_funcionario","created_at","updated_at","nome","cpf","endereco","empresas_id")
+                     SELECT "id","id_funcionario","created_at","updated_at","nome","cpf","endereco","empresas_id" FROM "afuncionarios"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "afuncionarios"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "apagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "empresas_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_apagamentos_on_empresas_id" ON "apagamentos" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "apagamentos" ("id","tipo","created_at","updated_at","empresas_id")
+                     SELECT "id","tipo","created_at","updated_at","empresas_id" FROM "pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "empresas_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_a7d70e99ba"
+FOREIGN KEY ("empresas_id")
+  REFERENCES "empresas" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_pagamentos_on_empresas_id" ON "pagamentos" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "pagamentos" ("id","tipo","created_at","updated_at","empresas_id")
+                     SELECT "id","tipo","created_at","updated_at","empresas_id" FROM "apagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "apagamentos"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aproduto_pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quantidade" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "pagamento_id" integer DEFAULT NULL, "produto_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "tindex_aproduto_pagamentos_on_produto_id" ON "aproduto_pagamentos" ("produto_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "tindex_aproduto_pagamentos_on_pagamento_id" ON "aproduto_pagamentos" ("pagamento_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aproduto_pagamentos" ("id","quantidade","created_at","updated_at","pagamento_id","produto_id")
+                     SELECT "id","quantidade","created_at","updated_at","pagamento_id","produto_id" FROM "produto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "produto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "produto_pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quantidade" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "pagamento_id" integer DEFAULT NULL, "produto_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_066020e60a"
+FOREIGN KEY ("pagamento_id")
+  REFERENCES "pagamentos" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_produto_pagamentos_on_pagamento_id" ON "produto_pagamentos" ("pagamento_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_produto_pagamentos_on_produto_id" ON "produto_pagamentos" ("produto_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "produto_pagamentos" ("id","quantidade","created_at","updated_at","pagamento_id","produto_id")
+                     SELECT "id","quantidade","created_at","updated_at","pagamento_id","produto_id" FROM "aproduto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aproduto_pagamentos"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aproduto_pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quantidade" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "pagamento_id" integer DEFAULT NULL, "produto_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aproduto_pagamentos_on_produto_id" ON "aproduto_pagamentos" ("produto_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aproduto_pagamentos_on_pagamento_id" ON "aproduto_pagamentos" ("pagamento_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aproduto_pagamentos" ("id","quantidade","created_at","updated_at","pagamento_id","produto_id")
+                     SELECT "id","quantidade","created_at","updated_at","pagamento_id","produto_id" FROM "produto_pagamentos"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "produto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "produto_pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quantidade" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "pagamento_id" integer DEFAULT NULL, "produto_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_066020e60a"
+FOREIGN KEY ("pagamento_id")
+  REFERENCES "pagamentos" ("id")
+, CONSTRAINT "fk_rails_12e40ef417"
+FOREIGN KEY ("produto_id")
+  REFERENCES "produtos" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_produto_pagamentos_on_pagamento_id" ON "produto_pagamentos" ("pagamento_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_produto_pagamentos_on_produto_id" ON "produto_pagamentos" ("produto_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "produto_pagamentos" ("id","quantidade","created_at","updated_at","pagamento_id","produto_id")
+                     SELECT "id","quantidade","created_at","updated_at","pagamento_id","produto_id" FROM "aproduto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aproduto_pagamentos"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aprodutos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_produto" integer DEFAULT NULL, "tipo" varchar DEFAULT NULL, "peso" float DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar DEFAULT NULL, "estoque_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "tindex_aprodutos_on_estoque_id" ON "aprodutos" ("estoque_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aprodutos" ("id","id_produto","tipo","peso","created_at","updated_at","nome","estoque_id")
+                     SELECT "id","id_produto","tipo","peso","created_at","updated_at","nome","estoque_id" FROM "produtos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "produtos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "produtos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_produto" integer DEFAULT NULL, "tipo" varchar DEFAULT NULL, "peso" float DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar DEFAULT NULL, "estoque_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_7c07f22feb"
+FOREIGN KEY ("estoque_id")
+  REFERENCES "estoques" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_produtos_on_estoque_id" ON "produtos" ("estoque_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "produtos" ("id","id_produto","tipo","peso","created_at","updated_at","nome","estoque_id")
+                     SELECT "id","id_produto","tipo","peso","created_at","updated_at","nome","estoque_id" FROM "aprodutos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aprodutos"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20241126181023)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20241126180818),
+(20241126180439),
+(20241126180010),
+(20241126175034),
+(20241126174401),
+(20241120230449),
+(20241120223710),
+(20241120182740),
+(20241120163629),
+(20241120163552),
+(20241120161143),
+(20241118234355),
+(20241106221206),
+(20241106214252),
+(20241105225925);[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2024-12-01 17:20:57.060627', '2024-12-01 17:20:57.060628') RETURNING "key"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Update (0.1ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = 'test', "updated_at" = '2024-12-01 17:20:57.061607' WHERE "ar_internal_metadata"."key" = 'environment'[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('schema_sha1', '7e1f5ec604677acab67f85d6466f33d9d5705071', '2024-12-01 17:20:57.062477', '2024-12-01 17:20:57.062478') RETURNING "key"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to RemoveEmpresaIdFromEmpresa (20241201172510)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aempresas" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_empresa" integer DEFAULT NULL, "endereco" varchar DEFAULT NULL, "cnpj" varchar DEFAULT NULL, "telefone" varchar DEFAULT NULL, "nome" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aempresas" ("id","id_empresa","endereco","cnpj","telefone","nome","created_at","updated_at")
+                     SELECT "id","id_empresa","endereco","cnpj","telefone","nome","created_at","updated_at" FROM "empresas"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "empresas"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "empresas" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_empresa" integer DEFAULT NULL, "endereco" varchar DEFAULT NULL, "cnpj" varchar DEFAULT NULL, "telefone" varchar DEFAULT NULL, "nome" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "empresas" ("id","id_empresa","endereco","cnpj","telefone","nome","created_at","updated_at")
+                     SELECT "id","id_empresa","endereco","cnpj","telefone","nome","created_at","updated_at" FROM "aempresas"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aempresas"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241201172510') RETURNING "version"[0m
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "empresas"[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "empresas" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_empresa" integer, "endereco" varchar, "cnpj" varchar, "telefone" varchar, "nome" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "estoques"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "estoques" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_estoque" integer, "endereço" varchar, "empresa_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_estoques_on_empresa_id" ON "estoques" ("empresa_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "funcionarios"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "funcionarios" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_funcionario" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar, "cpf" varchar, "endereco" varchar, "empresas_id" integer)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_funcionarios_on_empresas_id" ON "funcionarios" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "empresas_id" integer)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_pagamentos_on_empresas_id" ON "pagamentos" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "produto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "produto_pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quantidade" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "pagamento_id" integer, "produto_id" integer)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_produto_pagamentos_on_pagamento_id" ON "produto_pagamentos" ("pagamento_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_produto_pagamentos_on_produto_id" ON "produto_pagamentos" ("produto_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "produtos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "produtos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_produto" integer, "tipo" varchar, "peso" float, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar, "estoque_id" integer)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_produtos_on_estoque_id" ON "produtos" ("estoque_id")[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aestoques" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_estoque" integer DEFAULT NULL, "endereço" varchar DEFAULT NULL, "empresa_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aestoques_on_empresa_id" ON "aestoques" ("empresa_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aestoques" ("id","id_estoque","endereço","empresa_id","created_at","updated_at")
+                     SELECT "id","id_estoque","endereço","empresa_id","created_at","updated_at" FROM "estoques"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "estoques"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "estoques" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_estoque" integer DEFAULT NULL, "endereço" varchar DEFAULT NULL, "empresa_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_f91c05fd67"
+FOREIGN KEY ("empresa_id")
+  REFERENCES "empresas" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_estoques_on_empresa_id" ON "estoques" ("empresa_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "estoques" ("id","id_estoque","endereço","empresa_id","created_at","updated_at")
+                     SELECT "id","id_estoque","endereço","empresa_id","created_at","updated_at" FROM "aestoques"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aestoques"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "afuncionarios" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_funcionario" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar DEFAULT NULL, "cpf" varchar DEFAULT NULL, "endereco" varchar DEFAULT NULL, "empresas_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_afuncionarios_on_empresas_id" ON "afuncionarios" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "afuncionarios" ("id","id_funcionario","created_at","updated_at","nome","cpf","endereco","empresas_id")
+                     SELECT "id","id_funcionario","created_at","updated_at","nome","cpf","endereco","empresas_id" FROM "funcionarios"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "funcionarios"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "funcionarios" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_funcionario" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar DEFAULT NULL, "cpf" varchar DEFAULT NULL, "endereco" varchar DEFAULT NULL, "empresas_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_48f062a7b6"
+FOREIGN KEY ("empresas_id")
+  REFERENCES "empresas" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_funcionarios_on_empresas_id" ON "funcionarios" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "funcionarios" ("id","id_funcionario","created_at","updated_at","nome","cpf","endereco","empresas_id")
+                     SELECT "id","id_funcionario","created_at","updated_at","nome","cpf","endereco","empresas_id" FROM "afuncionarios"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "afuncionarios"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "apagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "empresas_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_apagamentos_on_empresas_id" ON "apagamentos" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "apagamentos" ("id","tipo","created_at","updated_at","empresas_id")
+                     SELECT "id","tipo","created_at","updated_at","empresas_id" FROM "pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "empresas_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_a7d70e99ba"
+FOREIGN KEY ("empresas_id")
+  REFERENCES "empresas" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_pagamentos_on_empresas_id" ON "pagamentos" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "pagamentos" ("id","tipo","created_at","updated_at","empresas_id")
+                     SELECT "id","tipo","created_at","updated_at","empresas_id" FROM "apagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "apagamentos"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aproduto_pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quantidade" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "pagamento_id" integer DEFAULT NULL, "produto_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aproduto_pagamentos_on_produto_id" ON "aproduto_pagamentos" ("produto_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "tindex_aproduto_pagamentos_on_pagamento_id" ON "aproduto_pagamentos" ("pagamento_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aproduto_pagamentos" ("id","quantidade","created_at","updated_at","pagamento_id","produto_id")
+                     SELECT "id","quantidade","created_at","updated_at","pagamento_id","produto_id" FROM "produto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "produto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "produto_pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quantidade" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "pagamento_id" integer DEFAULT NULL, "produto_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_066020e60a"
+FOREIGN KEY ("pagamento_id")
+  REFERENCES "pagamentos" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_produto_pagamentos_on_pagamento_id" ON "produto_pagamentos" ("pagamento_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_produto_pagamentos_on_produto_id" ON "produto_pagamentos" ("produto_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "produto_pagamentos" ("id","quantidade","created_at","updated_at","pagamento_id","produto_id")
+                     SELECT "id","quantidade","created_at","updated_at","pagamento_id","produto_id" FROM "aproduto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aproduto_pagamentos"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aproduto_pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quantidade" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "pagamento_id" integer DEFAULT NULL, "produto_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aproduto_pagamentos_on_produto_id" ON "aproduto_pagamentos" ("produto_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "tindex_aproduto_pagamentos_on_pagamento_id" ON "aproduto_pagamentos" ("pagamento_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aproduto_pagamentos" ("id","quantidade","created_at","updated_at","pagamento_id","produto_id")
+                     SELECT "id","quantidade","created_at","updated_at","pagamento_id","produto_id" FROM "produto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "produto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "produto_pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quantidade" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "pagamento_id" integer DEFAULT NULL, "produto_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_066020e60a"
+FOREIGN KEY ("pagamento_id")
+  REFERENCES "pagamentos" ("id")
+, CONSTRAINT "fk_rails_12e40ef417"
+FOREIGN KEY ("produto_id")
+  REFERENCES "produtos" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_produto_pagamentos_on_pagamento_id" ON "produto_pagamentos" ("pagamento_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_produto_pagamentos_on_produto_id" ON "produto_pagamentos" ("produto_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "produto_pagamentos" ("id","quantidade","created_at","updated_at","pagamento_id","produto_id")
+                     SELECT "id","quantidade","created_at","updated_at","pagamento_id","produto_id" FROM "aproduto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aproduto_pagamentos"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aprodutos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_produto" integer DEFAULT NULL, "tipo" varchar DEFAULT NULL, "peso" float DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar DEFAULT NULL, "estoque_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aprodutos_on_estoque_id" ON "aprodutos" ("estoque_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aprodutos" ("id","id_produto","tipo","peso","created_at","updated_at","nome","estoque_id")
+                     SELECT "id","id_produto","tipo","peso","created_at","updated_at","nome","estoque_id" FROM "produtos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "produtos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "produtos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_produto" integer DEFAULT NULL, "tipo" varchar DEFAULT NULL, "peso" float DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar DEFAULT NULL, "estoque_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_7c07f22feb"
+FOREIGN KEY ("estoque_id")
+  REFERENCES "estoques" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_produtos_on_estoque_id" ON "produtos" ("estoque_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "produtos" ("id","id_produto","tipo","peso","created_at","updated_at","nome","estoque_id")
+                     SELECT "id","id_produto","tipo","peso","created_at","updated_at","nome","estoque_id" FROM "aprodutos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aprodutos"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20241201172510)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20241126181023),
+(20241126180818),
+(20241126180439),
+(20241126180010),
+(20241126175034),
+(20241126174401),
+(20241120230449),
+(20241120223710),
+(20241120182740),
+(20241120163629),
+(20241120163552),
+(20241120161143),
+(20241118234355),
+(20241106221206),
+(20241106214252),
+(20241105225925);[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2024-12-01 17:31:44.308603', '2024-12-01 17:31:44.308606') RETURNING "key"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('schema_sha1', 'fb13eb09a40725836f742e858460b1b94a1a0c24', '2024-12-01 17:31:44.310616', '2024-12-01 17:31:44.310617') RETURNING "key"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "empresas"[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "empresas" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_empresa" integer, "endereco" varchar, "cnpj" varchar, "telefone" varchar, "nome" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "estoques"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "estoques" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_estoque" integer, "endereço" varchar, "empresa_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_estoques_on_empresa_id" ON "estoques" ("empresa_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "funcionarios"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "funcionarios" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_funcionario" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar, "cpf" varchar, "endereco" varchar, "empresas_id" integer)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_funcionarios_on_empresas_id" ON "funcionarios" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "empresas_id" integer)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_pagamentos_on_empresas_id" ON "pagamentos" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "produto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "produto_pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quantidade" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "pagamento_id" integer, "produto_id" integer)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_produto_pagamentos_on_pagamento_id" ON "produto_pagamentos" ("pagamento_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_produto_pagamentos_on_produto_id" ON "produto_pagamentos" ("produto_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "produtos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "produtos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_produto" integer, "tipo" varchar, "peso" float, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar, "estoque_id" integer)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_produtos_on_estoque_id" ON "produtos" ("estoque_id")[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aestoques" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_estoque" integer DEFAULT NULL, "endereço" varchar DEFAULT NULL, "empresa_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "tindex_aestoques_on_empresa_id" ON "aestoques" ("empresa_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aestoques" ("id","id_estoque","endereço","empresa_id","created_at","updated_at")
+                     SELECT "id","id_estoque","endereço","empresa_id","created_at","updated_at" FROM "estoques"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "estoques"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "estoques" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_estoque" integer DEFAULT NULL, "endereço" varchar DEFAULT NULL, "empresa_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_f91c05fd67"
+FOREIGN KEY ("empresa_id")
+  REFERENCES "empresas" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_estoques_on_empresa_id" ON "estoques" ("empresa_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "estoques" ("id","id_estoque","endereço","empresa_id","created_at","updated_at")
+                     SELECT "id","id_estoque","endereço","empresa_id","created_at","updated_at" FROM "aestoques"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aestoques"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "afuncionarios" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_funcionario" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar DEFAULT NULL, "cpf" varchar DEFAULT NULL, "endereco" varchar DEFAULT NULL, "empresas_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_afuncionarios_on_empresas_id" ON "afuncionarios" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "afuncionarios" ("id","id_funcionario","created_at","updated_at","nome","cpf","endereco","empresas_id")
+                     SELECT "id","id_funcionario","created_at","updated_at","nome","cpf","endereco","empresas_id" FROM "funcionarios"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "funcionarios"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "funcionarios" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_funcionario" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar DEFAULT NULL, "cpf" varchar DEFAULT NULL, "endereco" varchar DEFAULT NULL, "empresas_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_48f062a7b6"
+FOREIGN KEY ("empresas_id")
+  REFERENCES "empresas" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_funcionarios_on_empresas_id" ON "funcionarios" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "funcionarios" ("id","id_funcionario","created_at","updated_at","nome","cpf","endereco","empresas_id")
+                     SELECT "id","id_funcionario","created_at","updated_at","nome","cpf","endereco","empresas_id" FROM "afuncionarios"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "afuncionarios"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "apagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "empresas_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_apagamentos_on_empresas_id" ON "apagamentos" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "apagamentos" ("id","tipo","created_at","updated_at","empresas_id")
+                     SELECT "id","tipo","created_at","updated_at","empresas_id" FROM "pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "empresas_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_a7d70e99ba"
+FOREIGN KEY ("empresas_id")
+  REFERENCES "empresas" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_pagamentos_on_empresas_id" ON "pagamentos" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "pagamentos" ("id","tipo","created_at","updated_at","empresas_id")
+                     SELECT "id","tipo","created_at","updated_at","empresas_id" FROM "apagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "apagamentos"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aproduto_pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quantidade" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "pagamento_id" integer DEFAULT NULL, "produto_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aproduto_pagamentos_on_produto_id" ON "aproduto_pagamentos" ("produto_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aproduto_pagamentos_on_pagamento_id" ON "aproduto_pagamentos" ("pagamento_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aproduto_pagamentos" ("id","quantidade","created_at","updated_at","pagamento_id","produto_id")
+                     SELECT "id","quantidade","created_at","updated_at","pagamento_id","produto_id" FROM "produto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "produto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "produto_pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quantidade" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "pagamento_id" integer DEFAULT NULL, "produto_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_066020e60a"
+FOREIGN KEY ("pagamento_id")
+  REFERENCES "pagamentos" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_produto_pagamentos_on_pagamento_id" ON "produto_pagamentos" ("pagamento_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_produto_pagamentos_on_produto_id" ON "produto_pagamentos" ("produto_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "produto_pagamentos" ("id","quantidade","created_at","updated_at","pagamento_id","produto_id")
+                     SELECT "id","quantidade","created_at","updated_at","pagamento_id","produto_id" FROM "aproduto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aproduto_pagamentos"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aproduto_pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quantidade" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "pagamento_id" integer DEFAULT NULL, "produto_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "tindex_aproduto_pagamentos_on_produto_id" ON "aproduto_pagamentos" ("produto_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aproduto_pagamentos_on_pagamento_id" ON "aproduto_pagamentos" ("pagamento_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aproduto_pagamentos" ("id","quantidade","created_at","updated_at","pagamento_id","produto_id")
+                     SELECT "id","quantidade","created_at","updated_at","pagamento_id","produto_id" FROM "produto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "produto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "produto_pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quantidade" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "pagamento_id" integer DEFAULT NULL, "produto_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_066020e60a"
+FOREIGN KEY ("pagamento_id")
+  REFERENCES "pagamentos" ("id")
+, CONSTRAINT "fk_rails_12e40ef417"
+FOREIGN KEY ("produto_id")
+  REFERENCES "produtos" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_produto_pagamentos_on_pagamento_id" ON "produto_pagamentos" ("pagamento_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_produto_pagamentos_on_produto_id" ON "produto_pagamentos" ("produto_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "produto_pagamentos" ("id","quantidade","created_at","updated_at","pagamento_id","produto_id")
+                     SELECT "id","quantidade","created_at","updated_at","pagamento_id","produto_id" FROM "aproduto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aproduto_pagamentos"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aprodutos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_produto" integer DEFAULT NULL, "tipo" varchar DEFAULT NULL, "peso" float DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar DEFAULT NULL, "estoque_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "tindex_aprodutos_on_estoque_id" ON "aprodutos" ("estoque_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aprodutos" ("id","id_produto","tipo","peso","created_at","updated_at","nome","estoque_id")
+                     SELECT "id","id_produto","tipo","peso","created_at","updated_at","nome","estoque_id" FROM "produtos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "produtos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "produtos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_produto" integer DEFAULT NULL, "tipo" varchar DEFAULT NULL, "peso" float DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar DEFAULT NULL, "estoque_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_7c07f22feb"
+FOREIGN KEY ("estoque_id")
+  REFERENCES "estoques" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_produtos_on_estoque_id" ON "produtos" ("estoque_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "produtos" ("id","id_produto","tipo","peso","created_at","updated_at","nome","estoque_id")
+                     SELECT "id","id_produto","tipo","peso","created_at","updated_at","nome","estoque_id" FROM "aprodutos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aprodutos"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20241201172510)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20241126181023),
+(20241126180818),
+(20241126180439),
+(20241126180010),
+(20241126175034),
+(20241126174401),
+(20241120230449),
+(20241120223710),
+(20241120182740),
+(20241120163629),
+(20241120163552),
+(20241120161143),
+(20241118234355),
+(20241106221206),
+(20241106214252),
+(20241105225925);[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2024-12-01 17:31:44.389044', '2024-12-01 17:31:44.389046') RETURNING "key"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Update (0.1ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = 'test', "updated_at" = '2024-12-01 17:31:44.389961' WHERE "ar_internal_metadata"."key" = 'environment'[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('schema_sha1', 'fb13eb09a40725836f742e858460b1b94a1a0c24', '2024-12-01 17:31:44.390838', '2024-12-01 17:31:44.390839') RETURNING "key"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "empresas"[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "empresas" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "endereco" varchar, "cnpj" varchar, "telefone" varchar, "nome" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "estoques"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "estoques" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "endereço" varchar, "empresa_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_estoques_on_empresa_id" ON "estoques" ("empresa_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "funcionarios"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "funcionarios" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar, "cpf" varchar, "endereco" varchar, "empresas_id" integer)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_funcionarios_on_empresas_id" ON "funcionarios" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "empresas_id" integer)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_pagamentos_on_empresas_id" ON "pagamentos" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "produto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "produto_pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quantidade" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "pagamento_id" integer, "produto_id" integer)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_produto_pagamentos_on_pagamento_id" ON "produto_pagamentos" ("pagamento_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_produto_pagamentos_on_produto_id" ON "produto_pagamentos" ("produto_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "produtos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "produtos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_produto" integer, "tipo" varchar, "peso" float, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar, "estoque_id" integer)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_produtos_on_estoque_id" ON "produtos" ("estoque_id")[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aestoques" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "endereço" varchar DEFAULT NULL, "empresa_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aestoques_on_empresa_id" ON "aestoques" ("empresa_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aestoques" ("id","endereço","empresa_id","created_at","updated_at")
+                     SELECT "id","endereço","empresa_id","created_at","updated_at" FROM "estoques"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "estoques"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "estoques" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "endereço" varchar DEFAULT NULL, "empresa_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_f91c05fd67"
+FOREIGN KEY ("empresa_id")
+  REFERENCES "empresas" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_estoques_on_empresa_id" ON "estoques" ("empresa_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "estoques" ("id","endereço","empresa_id","created_at","updated_at")
+                     SELECT "id","endereço","empresa_id","created_at","updated_at" FROM "aestoques"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aestoques"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "afuncionarios" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar DEFAULT NULL, "cpf" varchar DEFAULT NULL, "endereco" varchar DEFAULT NULL, "empresas_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_afuncionarios_on_empresas_id" ON "afuncionarios" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "afuncionarios" ("id","created_at","updated_at","nome","cpf","endereco","empresas_id")
+                     SELECT "id","created_at","updated_at","nome","cpf","endereco","empresas_id" FROM "funcionarios"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "funcionarios"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "funcionarios" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar DEFAULT NULL, "cpf" varchar DEFAULT NULL, "endereco" varchar DEFAULT NULL, "empresas_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_48f062a7b6"
+FOREIGN KEY ("empresas_id")
+  REFERENCES "empresas" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_funcionarios_on_empresas_id" ON "funcionarios" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "funcionarios" ("id","created_at","updated_at","nome","cpf","endereco","empresas_id")
+                     SELECT "id","created_at","updated_at","nome","cpf","endereco","empresas_id" FROM "afuncionarios"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "afuncionarios"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "apagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "empresas_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_apagamentos_on_empresas_id" ON "apagamentos" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "apagamentos" ("id","tipo","created_at","updated_at","empresas_id")
+                     SELECT "id","tipo","created_at","updated_at","empresas_id" FROM "pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "empresas_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_a7d70e99ba"
+FOREIGN KEY ("empresas_id")
+  REFERENCES "empresas" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_pagamentos_on_empresas_id" ON "pagamentos" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "pagamentos" ("id","tipo","created_at","updated_at","empresas_id")
+                     SELECT "id","tipo","created_at","updated_at","empresas_id" FROM "apagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "apagamentos"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aproduto_pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quantidade" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "pagamento_id" integer DEFAULT NULL, "produto_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aproduto_pagamentos_on_produto_id" ON "aproduto_pagamentos" ("produto_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aproduto_pagamentos_on_pagamento_id" ON "aproduto_pagamentos" ("pagamento_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aproduto_pagamentos" ("id","quantidade","created_at","updated_at","pagamento_id","produto_id")
+                     SELECT "id","quantidade","created_at","updated_at","pagamento_id","produto_id" FROM "produto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "produto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "produto_pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quantidade" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "pagamento_id" integer DEFAULT NULL, "produto_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_066020e60a"
+FOREIGN KEY ("pagamento_id")
+  REFERENCES "pagamentos" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_produto_pagamentos_on_pagamento_id" ON "produto_pagamentos" ("pagamento_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_produto_pagamentos_on_produto_id" ON "produto_pagamentos" ("produto_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "produto_pagamentos" ("id","quantidade","created_at","updated_at","pagamento_id","produto_id")
+                     SELECT "id","quantidade","created_at","updated_at","pagamento_id","produto_id" FROM "aproduto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aproduto_pagamentos"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aproduto_pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quantidade" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "pagamento_id" integer DEFAULT NULL, "produto_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aproduto_pagamentos_on_produto_id" ON "aproduto_pagamentos" ("produto_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aproduto_pagamentos_on_pagamento_id" ON "aproduto_pagamentos" ("pagamento_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aproduto_pagamentos" ("id","quantidade","created_at","updated_at","pagamento_id","produto_id")
+                     SELECT "id","quantidade","created_at","updated_at","pagamento_id","produto_id" FROM "produto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "produto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "produto_pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quantidade" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "pagamento_id" integer DEFAULT NULL, "produto_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_066020e60a"
+FOREIGN KEY ("pagamento_id")
+  REFERENCES "pagamentos" ("id")
+, CONSTRAINT "fk_rails_12e40ef417"
+FOREIGN KEY ("produto_id")
+  REFERENCES "produtos" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_produto_pagamentos_on_pagamento_id" ON "produto_pagamentos" ("pagamento_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_produto_pagamentos_on_produto_id" ON "produto_pagamentos" ("produto_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "produto_pagamentos" ("id","quantidade","created_at","updated_at","pagamento_id","produto_id")
+                     SELECT "id","quantidade","created_at","updated_at","pagamento_id","produto_id" FROM "aproduto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aproduto_pagamentos"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aprodutos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_produto" integer DEFAULT NULL, "tipo" varchar DEFAULT NULL, "peso" float DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar DEFAULT NULL, "estoque_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aprodutos_on_estoque_id" ON "aprodutos" ("estoque_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aprodutos" ("id","id_produto","tipo","peso","created_at","updated_at","nome","estoque_id")
+                     SELECT "id","id_produto","tipo","peso","created_at","updated_at","nome","estoque_id" FROM "produtos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "produtos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "produtos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_produto" integer DEFAULT NULL, "tipo" varchar DEFAULT NULL, "peso" float DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar DEFAULT NULL, "estoque_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_7c07f22feb"
+FOREIGN KEY ("estoque_id")
+  REFERENCES "estoques" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_produtos_on_estoque_id" ON "produtos" ("estoque_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "produtos" ("id","id_produto","tipo","peso","created_at","updated_at","nome","estoque_id")
+                     SELECT "id","id_produto","tipo","peso","created_at","updated_at","nome","estoque_id" FROM "aprodutos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aprodutos"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20241201172510)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20241126181023),
+(20241126180818),
+(20241126180439),
+(20241126180010),
+(20241126175034),
+(20241126174401),
+(20241120230449),
+(20241120223710),
+(20241120182740),
+(20241120163629),
+(20241120163552),
+(20241120161143),
+(20241118234355),
+(20241106221206),
+(20241106214252),
+(20241105225925);[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2024-12-01 17:34:16.150128', '2024-12-01 17:34:16.150130') RETURNING "key"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('schema_sha1', '677b9b161c03e8c1d17dc82fbec917ddd321f990', '2024-12-01 17:34:16.152148', '2024-12-01 17:34:16.152150') RETURNING "key"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "empresas"[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "empresas" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "endereco" varchar, "cnpj" varchar, "telefone" varchar, "nome" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "estoques"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "estoques" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "endereço" varchar, "empresa_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_estoques_on_empresa_id" ON "estoques" ("empresa_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "funcionarios"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "funcionarios" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar, "cpf" varchar, "endereco" varchar, "empresas_id" integer)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_funcionarios_on_empresas_id" ON "funcionarios" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "empresas_id" integer)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_pagamentos_on_empresas_id" ON "pagamentos" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "produto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "produto_pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quantidade" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "pagamento_id" integer, "produto_id" integer)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_produto_pagamentos_on_pagamento_id" ON "produto_pagamentos" ("pagamento_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_produto_pagamentos_on_produto_id" ON "produto_pagamentos" ("produto_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "produtos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "produtos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_produto" integer, "tipo" varchar, "peso" float, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar, "estoque_id" integer)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_produtos_on_estoque_id" ON "produtos" ("estoque_id")[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aestoques" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "endereço" varchar DEFAULT NULL, "empresa_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aestoques_on_empresa_id" ON "aestoques" ("empresa_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aestoques" ("id","endereço","empresa_id","created_at","updated_at")
+                     SELECT "id","endereço","empresa_id","created_at","updated_at" FROM "estoques"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "estoques"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "estoques" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "endereço" varchar DEFAULT NULL, "empresa_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_f91c05fd67"
+FOREIGN KEY ("empresa_id")
+  REFERENCES "empresas" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_estoques_on_empresa_id" ON "estoques" ("empresa_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "estoques" ("id","endereço","empresa_id","created_at","updated_at")
+                     SELECT "id","endereço","empresa_id","created_at","updated_at" FROM "aestoques"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aestoques"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "afuncionarios" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar DEFAULT NULL, "cpf" varchar DEFAULT NULL, "endereco" varchar DEFAULT NULL, "empresas_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_afuncionarios_on_empresas_id" ON "afuncionarios" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "afuncionarios" ("id","created_at","updated_at","nome","cpf","endereco","empresas_id")
+                     SELECT "id","created_at","updated_at","nome","cpf","endereco","empresas_id" FROM "funcionarios"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "funcionarios"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "funcionarios" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar DEFAULT NULL, "cpf" varchar DEFAULT NULL, "endereco" varchar DEFAULT NULL, "empresas_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_48f062a7b6"
+FOREIGN KEY ("empresas_id")
+  REFERENCES "empresas" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_funcionarios_on_empresas_id" ON "funcionarios" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "funcionarios" ("id","created_at","updated_at","nome","cpf","endereco","empresas_id")
+                     SELECT "id","created_at","updated_at","nome","cpf","endereco","empresas_id" FROM "afuncionarios"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "afuncionarios"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "apagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "empresas_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_apagamentos_on_empresas_id" ON "apagamentos" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "apagamentos" ("id","tipo","created_at","updated_at","empresas_id")
+                     SELECT "id","tipo","created_at","updated_at","empresas_id" FROM "pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "empresas_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_a7d70e99ba"
+FOREIGN KEY ("empresas_id")
+  REFERENCES "empresas" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_pagamentos_on_empresas_id" ON "pagamentos" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "pagamentos" ("id","tipo","created_at","updated_at","empresas_id")
+                     SELECT "id","tipo","created_at","updated_at","empresas_id" FROM "apagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "apagamentos"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aproduto_pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quantidade" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "pagamento_id" integer DEFAULT NULL, "produto_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aproduto_pagamentos_on_produto_id" ON "aproduto_pagamentos" ("produto_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "tindex_aproduto_pagamentos_on_pagamento_id" ON "aproduto_pagamentos" ("pagamento_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aproduto_pagamentos" ("id","quantidade","created_at","updated_at","pagamento_id","produto_id")
+                     SELECT "id","quantidade","created_at","updated_at","pagamento_id","produto_id" FROM "produto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "produto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "produto_pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quantidade" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "pagamento_id" integer DEFAULT NULL, "produto_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_066020e60a"
+FOREIGN KEY ("pagamento_id")
+  REFERENCES "pagamentos" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_produto_pagamentos_on_pagamento_id" ON "produto_pagamentos" ("pagamento_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_produto_pagamentos_on_produto_id" ON "produto_pagamentos" ("produto_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "produto_pagamentos" ("id","quantidade","created_at","updated_at","pagamento_id","produto_id")
+                     SELECT "id","quantidade","created_at","updated_at","pagamento_id","produto_id" FROM "aproduto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aproduto_pagamentos"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aproduto_pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quantidade" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "pagamento_id" integer DEFAULT NULL, "produto_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aproduto_pagamentos_on_produto_id" ON "aproduto_pagamentos" ("produto_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aproduto_pagamentos_on_pagamento_id" ON "aproduto_pagamentos" ("pagamento_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aproduto_pagamentos" ("id","quantidade","created_at","updated_at","pagamento_id","produto_id")
+                     SELECT "id","quantidade","created_at","updated_at","pagamento_id","produto_id" FROM "produto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "produto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "produto_pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quantidade" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "pagamento_id" integer DEFAULT NULL, "produto_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_066020e60a"
+FOREIGN KEY ("pagamento_id")
+  REFERENCES "pagamentos" ("id")
+, CONSTRAINT "fk_rails_12e40ef417"
+FOREIGN KEY ("produto_id")
+  REFERENCES "produtos" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_produto_pagamentos_on_pagamento_id" ON "produto_pagamentos" ("pagamento_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_produto_pagamentos_on_produto_id" ON "produto_pagamentos" ("produto_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "produto_pagamentos" ("id","quantidade","created_at","updated_at","pagamento_id","produto_id")
+                     SELECT "id","quantidade","created_at","updated_at","pagamento_id","produto_id" FROM "aproduto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aproduto_pagamentos"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aprodutos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_produto" integer DEFAULT NULL, "tipo" varchar DEFAULT NULL, "peso" float DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar DEFAULT NULL, "estoque_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "tindex_aprodutos_on_estoque_id" ON "aprodutos" ("estoque_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aprodutos" ("id","id_produto","tipo","peso","created_at","updated_at","nome","estoque_id")
+                     SELECT "id","id_produto","tipo","peso","created_at","updated_at","nome","estoque_id" FROM "produtos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "produtos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "produtos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_produto" integer DEFAULT NULL, "tipo" varchar DEFAULT NULL, "peso" float DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar DEFAULT NULL, "estoque_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_7c07f22feb"
+FOREIGN KEY ("estoque_id")
+  REFERENCES "estoques" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_produtos_on_estoque_id" ON "produtos" ("estoque_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "produtos" ("id","id_produto","tipo","peso","created_at","updated_at","nome","estoque_id")
+                     SELECT "id","id_produto","tipo","peso","created_at","updated_at","nome","estoque_id" FROM "aprodutos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aprodutos"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20241201172510)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20241126181023),
+(20241126180818),
+(20241126180439),
+(20241126180010),
+(20241126175034),
+(20241126174401),
+(20241120230449),
+(20241120223710),
+(20241120182740),
+(20241120163629),
+(20241120163552),
+(20241120161143),
+(20241118234355),
+(20241106221206),
+(20241106214252),
+(20241105225925);[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2024-12-01 17:34:16.230869', '2024-12-01 17:34:16.230871') RETURNING "key"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Update (0.1ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = 'test', "updated_at" = '2024-12-01 17:34:16.231839' WHERE "ar_internal_metadata"."key" = 'environment'[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('schema_sha1', '677b9b161c03e8c1d17dc82fbec917ddd321f990', '2024-12-01 17:34:16.232915', '2024-12-01 17:34:16.232916') RETURNING "key"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "empresas"[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE TABLE "empresas" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "endereco" varchar, "cnpj" varchar, "telefone" varchar, "nome" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "estoques"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "estoques" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "endereço" varchar, "empresa_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_estoques_on_empresa_id" ON "estoques" ("empresa_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "funcionarios"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "funcionarios" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar, "cpf" varchar, "endereco" varchar, "empresas_id" integer)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_funcionarios_on_empresas_id" ON "funcionarios" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "empresas_id" integer)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_pagamentos_on_empresas_id" ON "pagamentos" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "produto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "produto_pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quantidade" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "pagamento_id" integer, "produto_id" integer)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_produto_pagamentos_on_pagamento_id" ON "produto_pagamentos" ("pagamento_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_produto_pagamentos_on_produto_id" ON "produto_pagamentos" ("produto_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "produtos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "produtos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar, "peso" float, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar, "estoque_id" integer)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_produtos_on_estoque_id" ON "produtos" ("estoque_id")[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aestoques" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "endereço" varchar DEFAULT NULL, "empresa_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aestoques_on_empresa_id" ON "aestoques" ("empresa_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aestoques" ("id","endereço","empresa_id","created_at","updated_at")
+                     SELECT "id","endereço","empresa_id","created_at","updated_at" FROM "estoques"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "estoques"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "estoques" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "endereço" varchar DEFAULT NULL, "empresa_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_f91c05fd67"
+FOREIGN KEY ("empresa_id")
+  REFERENCES "empresas" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_estoques_on_empresa_id" ON "estoques" ("empresa_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "estoques" ("id","endereço","empresa_id","created_at","updated_at")
+                     SELECT "id","endereço","empresa_id","created_at","updated_at" FROM "aestoques"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aestoques"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "afuncionarios" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar DEFAULT NULL, "cpf" varchar DEFAULT NULL, "endereco" varchar DEFAULT NULL, "empresas_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_afuncionarios_on_empresas_id" ON "afuncionarios" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "afuncionarios" ("id","created_at","updated_at","nome","cpf","endereco","empresas_id")
+                     SELECT "id","created_at","updated_at","nome","cpf","endereco","empresas_id" FROM "funcionarios"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "funcionarios"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "funcionarios" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar DEFAULT NULL, "cpf" varchar DEFAULT NULL, "endereco" varchar DEFAULT NULL, "empresas_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_48f062a7b6"
+FOREIGN KEY ("empresas_id")
+  REFERENCES "empresas" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_funcionarios_on_empresas_id" ON "funcionarios" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "funcionarios" ("id","created_at","updated_at","nome","cpf","endereco","empresas_id")
+                     SELECT "id","created_at","updated_at","nome","cpf","endereco","empresas_id" FROM "afuncionarios"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "afuncionarios"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "apagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "empresas_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_apagamentos_on_empresas_id" ON "apagamentos" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "apagamentos" ("id","tipo","created_at","updated_at","empresas_id")
+                     SELECT "id","tipo","created_at","updated_at","empresas_id" FROM "pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "empresas_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_a7d70e99ba"
+FOREIGN KEY ("empresas_id")
+  REFERENCES "empresas" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_pagamentos_on_empresas_id" ON "pagamentos" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "pagamentos" ("id","tipo","created_at","updated_at","empresas_id")
+                     SELECT "id","tipo","created_at","updated_at","empresas_id" FROM "apagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "apagamentos"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aproduto_pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quantidade" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "pagamento_id" integer DEFAULT NULL, "produto_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aproduto_pagamentos_on_produto_id" ON "aproduto_pagamentos" ("produto_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aproduto_pagamentos_on_pagamento_id" ON "aproduto_pagamentos" ("pagamento_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aproduto_pagamentos" ("id","quantidade","created_at","updated_at","pagamento_id","produto_id")
+                     SELECT "id","quantidade","created_at","updated_at","pagamento_id","produto_id" FROM "produto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "produto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "produto_pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quantidade" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "pagamento_id" integer DEFAULT NULL, "produto_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_066020e60a"
+FOREIGN KEY ("pagamento_id")
+  REFERENCES "pagamentos" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_produto_pagamentos_on_pagamento_id" ON "produto_pagamentos" ("pagamento_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_produto_pagamentos_on_produto_id" ON "produto_pagamentos" ("produto_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "produto_pagamentos" ("id","quantidade","created_at","updated_at","pagamento_id","produto_id")
+                     SELECT "id","quantidade","created_at","updated_at","pagamento_id","produto_id" FROM "aproduto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aproduto_pagamentos"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aproduto_pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quantidade" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "pagamento_id" integer DEFAULT NULL, "produto_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aproduto_pagamentos_on_produto_id" ON "aproduto_pagamentos" ("produto_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "tindex_aproduto_pagamentos_on_pagamento_id" ON "aproduto_pagamentos" ("pagamento_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aproduto_pagamentos" ("id","quantidade","created_at","updated_at","pagamento_id","produto_id")
+                     SELECT "id","quantidade","created_at","updated_at","pagamento_id","produto_id" FROM "produto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "produto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "produto_pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quantidade" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "pagamento_id" integer DEFAULT NULL, "produto_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_066020e60a"
+FOREIGN KEY ("pagamento_id")
+  REFERENCES "pagamentos" ("id")
+, CONSTRAINT "fk_rails_12e40ef417"
+FOREIGN KEY ("produto_id")
+  REFERENCES "produtos" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_produto_pagamentos_on_pagamento_id" ON "produto_pagamentos" ("pagamento_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_produto_pagamentos_on_produto_id" ON "produto_pagamentos" ("produto_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "produto_pagamentos" ("id","quantidade","created_at","updated_at","pagamento_id","produto_id")
+                     SELECT "id","quantidade","created_at","updated_at","pagamento_id","produto_id" FROM "aproduto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aproduto_pagamentos"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aprodutos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar DEFAULT NULL, "peso" float DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar DEFAULT NULL, "estoque_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aprodutos_on_estoque_id" ON "aprodutos" ("estoque_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aprodutos" ("id","tipo","peso","created_at","updated_at","nome","estoque_id")
+                     SELECT "id","tipo","peso","created_at","updated_at","nome","estoque_id" FROM "produtos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "produtos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "produtos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar DEFAULT NULL, "peso" float DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar DEFAULT NULL, "estoque_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_7c07f22feb"
+FOREIGN KEY ("estoque_id")
+  REFERENCES "estoques" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_produtos_on_estoque_id" ON "produtos" ("estoque_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "produtos" ("id","tipo","peso","created_at","updated_at","nome","estoque_id")
+                     SELECT "id","tipo","peso","created_at","updated_at","nome","estoque_id" FROM "aprodutos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aprodutos"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20241201172510)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20241126181023),
+(20241126180818),
+(20241126180439),
+(20241126180010),
+(20241126175034),
+(20241126174401),
+(20241120230449),
+(20241120223710),
+(20241120182740),
+(20241120163629),
+(20241120163552),
+(20241120161143),
+(20241118234355),
+(20241106221206),
+(20241106214252),
+(20241105225925);[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2024-12-01 17:58:17.380883', '2024-12-01 17:58:17.380885') RETURNING "key"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('schema_sha1', 'cbcd93fc4dc1bb90ceef532e65e96a9eb0c64523', '2024-12-01 17:58:17.382303', '2024-12-01 17:58:17.382304') RETURNING "key"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "empresas"[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "empresas" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "endereco" varchar, "cnpj" varchar, "telefone" varchar, "nome" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "estoques"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "estoques" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "endereço" varchar, "empresa_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_estoques_on_empresa_id" ON "estoques" ("empresa_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "funcionarios"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "funcionarios" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar, "cpf" varchar, "endereco" varchar, "empresas_id" integer)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_funcionarios_on_empresas_id" ON "funcionarios" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "empresas_id" integer)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_pagamentos_on_empresas_id" ON "pagamentos" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "produto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "produto_pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quantidade" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "pagamento_id" integer, "produto_id" integer)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_produto_pagamentos_on_pagamento_id" ON "produto_pagamentos" ("pagamento_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_produto_pagamentos_on_produto_id" ON "produto_pagamentos" ("produto_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "produtos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "produtos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar, "peso" float, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar, "estoque_id" integer)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_produtos_on_estoque_id" ON "produtos" ("estoque_id")[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aestoques" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "endereço" varchar DEFAULT NULL, "empresa_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aestoques_on_empresa_id" ON "aestoques" ("empresa_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aestoques" ("id","endereço","empresa_id","created_at","updated_at")
+                     SELECT "id","endereço","empresa_id","created_at","updated_at" FROM "estoques"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "estoques"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "estoques" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "endereço" varchar DEFAULT NULL, "empresa_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_f91c05fd67"
+FOREIGN KEY ("empresa_id")
+  REFERENCES "empresas" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_estoques_on_empresa_id" ON "estoques" ("empresa_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "estoques" ("id","endereço","empresa_id","created_at","updated_at")
+                     SELECT "id","endereço","empresa_id","created_at","updated_at" FROM "aestoques"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aestoques"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "afuncionarios" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar DEFAULT NULL, "cpf" varchar DEFAULT NULL, "endereco" varchar DEFAULT NULL, "empresas_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_afuncionarios_on_empresas_id" ON "afuncionarios" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "afuncionarios" ("id","created_at","updated_at","nome","cpf","endereco","empresas_id")
+                     SELECT "id","created_at","updated_at","nome","cpf","endereco","empresas_id" FROM "funcionarios"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "funcionarios"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "funcionarios" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar DEFAULT NULL, "cpf" varchar DEFAULT NULL, "endereco" varchar DEFAULT NULL, "empresas_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_48f062a7b6"
+FOREIGN KEY ("empresas_id")
+  REFERENCES "empresas" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_funcionarios_on_empresas_id" ON "funcionarios" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "funcionarios" ("id","created_at","updated_at","nome","cpf","endereco","empresas_id")
+                     SELECT "id","created_at","updated_at","nome","cpf","endereco","empresas_id" FROM "afuncionarios"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "afuncionarios"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "apagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "empresas_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_apagamentos_on_empresas_id" ON "apagamentos" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "apagamentos" ("id","tipo","created_at","updated_at","empresas_id")
+                     SELECT "id","tipo","created_at","updated_at","empresas_id" FROM "pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "empresas_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_a7d70e99ba"
+FOREIGN KEY ("empresas_id")
+  REFERENCES "empresas" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_pagamentos_on_empresas_id" ON "pagamentos" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "pagamentos" ("id","tipo","created_at","updated_at","empresas_id")
+                     SELECT "id","tipo","created_at","updated_at","empresas_id" FROM "apagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "apagamentos"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aproduto_pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quantidade" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "pagamento_id" integer DEFAULT NULL, "produto_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aproduto_pagamentos_on_produto_id" ON "aproduto_pagamentos" ("produto_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "tindex_aproduto_pagamentos_on_pagamento_id" ON "aproduto_pagamentos" ("pagamento_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aproduto_pagamentos" ("id","quantidade","created_at","updated_at","pagamento_id","produto_id")
+                     SELECT "id","quantidade","created_at","updated_at","pagamento_id","produto_id" FROM "produto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "produto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "produto_pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quantidade" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "pagamento_id" integer DEFAULT NULL, "produto_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_066020e60a"
+FOREIGN KEY ("pagamento_id")
+  REFERENCES "pagamentos" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_produto_pagamentos_on_pagamento_id" ON "produto_pagamentos" ("pagamento_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_produto_pagamentos_on_produto_id" ON "produto_pagamentos" ("produto_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "produto_pagamentos" ("id","quantidade","created_at","updated_at","pagamento_id","produto_id")
+                     SELECT "id","quantidade","created_at","updated_at","pagamento_id","produto_id" FROM "aproduto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aproduto_pagamentos"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aproduto_pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quantidade" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "pagamento_id" integer DEFAULT NULL, "produto_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aproduto_pagamentos_on_produto_id" ON "aproduto_pagamentos" ("produto_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aproduto_pagamentos_on_pagamento_id" ON "aproduto_pagamentos" ("pagamento_id")[0m
+  [1m[35m (3.9ms)[0m  [1m[32mINSERT INTO "aproduto_pagamentos" ("id","quantidade","created_at","updated_at","pagamento_id","produto_id")
+                     SELECT "id","quantidade","created_at","updated_at","pagamento_id","produto_id" FROM "produto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "produto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "produto_pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quantidade" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "pagamento_id" integer DEFAULT NULL, "produto_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_066020e60a"
+FOREIGN KEY ("pagamento_id")
+  REFERENCES "pagamentos" ("id")
+, CONSTRAINT "fk_rails_12e40ef417"
+FOREIGN KEY ("produto_id")
+  REFERENCES "produtos" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_produto_pagamentos_on_pagamento_id" ON "produto_pagamentos" ("pagamento_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_produto_pagamentos_on_produto_id" ON "produto_pagamentos" ("produto_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "produto_pagamentos" ("id","quantidade","created_at","updated_at","pagamento_id","produto_id")
+                     SELECT "id","quantidade","created_at","updated_at","pagamento_id","produto_id" FROM "aproduto_pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aproduto_pagamentos"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aprodutos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar DEFAULT NULL, "peso" float DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar DEFAULT NULL, "estoque_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "tindex_aprodutos_on_estoque_id" ON "aprodutos" ("estoque_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aprodutos" ("id","tipo","peso","created_at","updated_at","nome","estoque_id")
+                     SELECT "id","tipo","peso","created_at","updated_at","nome","estoque_id" FROM "produtos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "produtos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "produtos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar DEFAULT NULL, "peso" float DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar DEFAULT NULL, "estoque_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_7c07f22feb"
+FOREIGN KEY ("estoque_id")
+  REFERENCES "estoques" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_produtos_on_estoque_id" ON "produtos" ("estoque_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "produtos" ("id","tipo","peso","created_at","updated_at","nome","estoque_id")
+                     SELECT "id","tipo","peso","created_at","updated_at","nome","estoque_id" FROM "aprodutos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aprodutos"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20241201172510)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20241126181023),
+(20241126180818),
+(20241126180439),
+(20241126180010),
+(20241126175034),
+(20241126174401),
+(20241120230449),
+(20241120223710),
+(20241120182740),
+(20241120163629),
+(20241120163552),
+(20241120161143),
+(20241118234355),
+(20241106221206),
+(20241106214252),
+(20241105225925);[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2024-12-01 17:58:17.461546', '2024-12-01 17:58:17.461547') RETURNING "key"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Update (0.1ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = 'test', "updated_at" = '2024-12-01 17:58:17.462573' WHERE "ar_internal_metadata"."key" = 'environment'[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('schema_sha1', 'cbcd93fc4dc1bb90ceef532e65e96a9eb0c64523', '2024-12-01 17:58:17.463391', '2024-12-01 17:58:17.463393') RETURNING "key"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/produtos" for 127.0.0.1 at 2024-12-01 15:44:32 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProdutosController#create as */*
+  Parameters: {"tipo"=>"plastico", "nome"=>"Garrafa PET", "peso"=>10, "produto"=>{"tipo"=>"plastico", "peso"=>10, "nome"=>"Garrafa PET"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/produtos_controller.rb:17:in `create'
+  [1m[36mProduto Create (0.8ms)[0m  [1m[32mINSERT INTO "produtos" ("tipo", "peso", "created_at", "updated_at", "nome", "estoque_id") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["tipo", "plastico"], ["peso", 10.0], ["created_at", "2024-12-01 18:44:32.750558"], ["updated_at", "2024-12-01 18:44:32.750558"], ["nome", "Garrafa PET"], ["estoque_id", nil]]
+  ↳ app/controllers/produtos_controller.rb:17:in `create'
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/produtos_controller.rb:17:in `create'
+Completed 201 Created in 13ms (Views: 0.5ms | ActiveRecord: 4.2ms | Allocations: 21650)
+
+
+Started POST "/produtos" for 127.0.0.1 at 2024-12-01 15:44:34 -0300
+Processing by ProdutosController#create as */*
+  Parameters: {"tipo"=>"plastico", "nome"=>"Garrafa PET", "peso"=>10, "produto"=>{"tipo"=>"plastico", "peso"=>10, "nome"=>"Garrafa PET"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/produtos_controller.rb:17:in `create'
+  [1m[36mProduto Create (0.7ms)[0m  [1m[32mINSERT INTO "produtos" ("tipo", "peso", "created_at", "updated_at", "nome", "estoque_id") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["tipo", "plastico"], ["peso", 10.0], ["created_at", "2024-12-01 18:44:34.555459"], ["updated_at", "2024-12-01 18:44:34.555459"], ["nome", "Garrafa PET"], ["estoque_id", nil]]
+  ↳ app/controllers/produtos_controller.rb:17:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/produtos_controller.rb:17:in `create'
+Completed 201 Created in 3ms (Views: 0.3ms | ActiveRecord: 0.8ms | Allocations: 2090)
+
+
+Started GET "/produtos" for 127.0.0.1 at 2024-12-01 15:44:37 -0300
+Processing by ProdutosController#index as */*
+  Parameters: {"tipo"=>"plastico", "nome"=>"Garrafa PET", "peso"=>10, "produto"=>{"tipo"=>"plastico", "peso"=>10, "nome"=>"Garrafa PET"}}
+  [1m[36mProduto Load (0.1ms)[0m  [1m[34mSELECT "produtos".* FROM "produtos"[0m
+  ↳ app/controllers/produtos_controller.rb:7:in `index'
+Completed 200 OK in 7ms (Views: 1.2ms | ActiveRecord: 0.1ms | Allocations: 2883)
+
+
+Started GET "/produtos" for 127.0.0.1 at 2024-12-01 15:44:53 -0300
+Processing by ProdutosController#index as */*
+  Parameters: {"tipo"=>"plastico", "nome"=>"Garrafa PET", "peso"=>10, "dasdsa"=>123, "produto"=>{"tipo"=>"plastico", "peso"=>10, "nome"=>"Garrafa PET"}}
+  [1m[36mProduto Load (0.1ms)[0m  [1m[34mSELECT "produtos".* FROM "produtos"[0m
+  ↳ app/controllers/produtos_controller.rb:7:in `index'
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.1ms | Allocations: 816)
+
+
+Started POST "/produtos" for 127.0.0.1 at 2024-12-01 15:44:56 -0300
+Processing by ProdutosController#create as */*
+  Parameters: {"tipo"=>"plastico", "nome"=>"Garrafa PET", "peso"=>10, "dasdsa"=>123, "produto"=>{"tipo"=>"plastico", "peso"=>10, "nome"=>"Garrafa PET"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/produtos_controller.rb:17:in `create'
+  [1m[36mProduto Create (0.9ms)[0m  [1m[32mINSERT INTO "produtos" ("tipo", "peso", "created_at", "updated_at", "nome", "estoque_id") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["tipo", "plastico"], ["peso", 10.0], ["created_at", "2024-12-01 18:44:56.848833"], ["updated_at", "2024-12-01 18:44:56.848833"], ["nome", "Garrafa PET"], ["estoque_id", nil]]
+  ↳ app/controllers/produtos_controller.rb:17:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/produtos_controller.rb:17:in `create'
+Completed 201 Created in 3ms (Views: 0.3ms | ActiveRecord: 1.0ms | Allocations: 2088)
+
+
+Started POST "/produtos" for 127.0.0.1 at 2024-12-01 15:44:59 -0300
+Processing by ProdutosController#create as */*
+  Parameters: {"tipo"=>"plastico", "nome"=>"Garrafa PET", "peso"=>10, "dasdsa"=>123, "produto"=>{"tipo"=>"plastico", "peso"=>10, "nome"=>"Garrafa PET"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/produtos_controller.rb:17:in `create'
+  [1m[36mProduto Create (0.7ms)[0m  [1m[32mINSERT INTO "produtos" ("tipo", "peso", "created_at", "updated_at", "nome", "estoque_id") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["tipo", "plastico"], ["peso", 10.0], ["created_at", "2024-12-01 18:44:59.373479"], ["updated_at", "2024-12-01 18:44:59.373479"], ["nome", "Garrafa PET"], ["estoque_id", nil]]
+  ↳ app/controllers/produtos_controller.rb:17:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/produtos_controller.rb:17:in `create'
+Completed 201 Created in 3ms (Views: 0.2ms | ActiveRecord: 0.8ms | Allocations: 2069)
+
+
+Started POST "/produtos" for 127.0.0.1 at 2024-12-01 15:45:00 -0300
+Processing by ProdutosController#create as */*
+  Parameters: {"tipo"=>"plastico", "nome"=>"Garrafa PET", "peso"=>10, "dasdsa"=>123, "produto"=>{"tipo"=>"plastico", "peso"=>10, "nome"=>"Garrafa PET"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/produtos_controller.rb:17:in `create'
+  [1m[36mProduto Create (0.7ms)[0m  [1m[32mINSERT INTO "produtos" ("tipo", "peso", "created_at", "updated_at", "nome", "estoque_id") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["tipo", "plastico"], ["peso", 10.0], ["created_at", "2024-12-01 18:45:00.652293"], ["updated_at", "2024-12-01 18:45:00.652293"], ["nome", "Garrafa PET"], ["estoque_id", nil]]
+  ↳ app/controllers/produtos_controller.rb:17:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/produtos_controller.rb:17:in `create'
+Completed 201 Created in 3ms (Views: 0.3ms | ActiveRecord: 0.8ms | Allocations: 2069)
+
+
+Started GET "/produtos" for 127.0.0.1 at 2024-12-01 15:45:10 -0300
+Processing by ProdutosController#index as */*
+  Parameters: {"tipo"=>"plastico", "nome"=>"Garrafa PET", "peso"=>10, "produto"=>{"tipo"=>"plastico", "peso"=>10, "nome"=>"Garrafa PET"}}
+  [1m[36mProduto Load (0.1ms)[0m  [1m[34mSELECT "produtos".* FROM "produtos"[0m
+  ↳ app/controllers/produtos_controller.rb:7:in `index'
+Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.1ms | Allocations: 1037)
+
+
