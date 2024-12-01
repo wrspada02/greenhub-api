@@ -19,10 +19,12 @@ RSpec.describe "Produtos", type: :request do
       get "/produtos/#{product.id}"
 
       body = JSON.parse(response.body)
-      expect(response).to have_http_status(:ok)
-      expect(body["nome"]).to eq(product.nome)
-      expect(body["tipo"]).to eq(product.tipo)
-      expect(body["peso"]).to eq(product.peso)
+      aggregate_failures do
+        expect(response).to have_http_status(:ok)
+        expect(body["nome"]).to eq(product.nome)
+        expect(body["tipo"]).to eq(product.tipo)
+        expect(body["peso"]).to eq(product.peso)
+      end
     end
   end
 
@@ -35,8 +37,10 @@ RSpec.describe "Produtos", type: :request do
       it 'creates a product' do
         post "/produtos", params: valid_params, headers: headers
 
-        expect(response).to have_http_status(:created)
-        expect(Produto.count).to eq(1)
+        aggregate_failures do
+          expect(response).to have_http_status(:created)
+          expect(Produto.count).to eq(1)
+        end
       end
     end
 
@@ -68,11 +72,13 @@ RSpec.describe "Produtos", type: :request do
       it 'updates the product and returns the updated product' do
         put "/produtos/#{product.id}", params: valid_params
 
-        expect(response).to have_http_status(:ok)
         body = JSON.parse(response.body)
-        expect(body["nome"]).to eq("Mouse")
-        expect(body["tipo"]).to eq("Madeira")
-        expect(body["peso"]).to eq(3.4)
+        aggregate_failures do
+          expect(response).to have_http_status(:ok)
+          expect(body["nome"]).to eq("Mouse")
+          expect(body["tipo"]).to eq("Madeira")
+          expect(body["peso"]).to eq(3.4)
+        end
       end
     end
 
@@ -82,9 +88,11 @@ RSpec.describe "Produtos", type: :request do
       it 'returns errors and does not update the product' do
         put "/produtos/#{product.id}", params: invalid_params
 
-        expect(response).to have_http_status(:unprocessable_entity)
         body = JSON.parse(response.body)
-        expect(body).to include("peso")
+        aggregate_failures do
+          expect(response).to have_http_status(:unprocessable_entity)
+          expect(body).to include("peso")
+        end
       end
     end
   end
@@ -93,11 +101,12 @@ RSpec.describe "Produtos", type: :request do
     let!(:product) { create(:produto) }
 
     it 'deletes the product and returns no content' do
-      expect {
-        delete "/produtos/#{product.id}"
-      }.to change(Produto, :count).by(-1)
-
-      expect(response).to have_http_status(:no_content)
+      aggregate_failures do
+        expect {
+          delete "/produtos/#{product.id}"
+        }.to change(Produto, :count).by(-1)
+        expect(response).to have_http_status(:no_content)
+      end
     end
   end
 end
