@@ -57,7 +57,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_01_172510) do
   end
 
   create_table "produtos", force: :cascade do |t|
-    t.integer "id_produto"
     t.string "tipo"
     t.float "peso"
     t.datetime "created_at", null: false
