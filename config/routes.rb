@@ -12,6 +12,5 @@ Rails.application.routes.draw do
   resources :empresas
   resources :funcionarios
   resources :pagamentos
-  resources :produto_pagamentos
   resources :estoques
 end
