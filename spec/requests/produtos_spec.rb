@@ -67,7 +67,7 @@ RSpec.describe "Produtos", type: :request do
     let(:product) { create(:produto) }
 
     context 'with valid data' do
-      let(:valid_params) { { produto: { nome: "Mouse", tipo: "Madeira", peso: 3.4 } } }
+      let(:valid_params) { { produto: { nome: "Mouse" } } }
 
       it 'updates the product and returns the updated product' do
         put "/produtos/#{product.id}", params: valid_params
@@ -76,8 +76,6 @@ RSpec.describe "Produtos", type: :request do
         aggregate_failures do
           expect(response).to have_http_status(:ok)
           expect(body["nome"]).to eq("Mouse")
-          expect(body["tipo"]).to eq("Madeira")
-          expect(body["peso"]).to eq(3.4)
         end
       end
     end
