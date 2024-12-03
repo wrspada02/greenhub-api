@@ -32,21 +32,48 @@ RSpec.describe "Funcionarios", type: :request do
     let(:headers) { { "accept" => "application/json" } }
 
     context 'with valid data' do
-      let(:valid_params) { { funcionario: attributes_for(:funcionario) } }
+      let!(:employee) { create(:empresa) }
+      let(:valid_params) { { funcionario: attributes_for(:funcionario).merge(empresa_id: employee.id) } }
 
       it 'creates a employee' do
         post "/funcionarios", params: valid_params, headers: headers
 
         aggregate_failures do
           expect(response).to have_http_status(:created)
-          expect(Produto.count).to eq(1)
+          expect(Funcionario.count).to eq(1)
         end
       end
     end
 
     context 'with invalid data' do
-      it 'returns error when peso is invalid' do
-        invalid_params = { produto: attributes_for(:funcionario, peso: -1) }
+      let!(:employee) { create(:empresa) }
+      
+      it 'returns error when cpf is nil' do
+        invalid_params = build_invalid_params(cpf: nil)
+
+        post "/funcionarios", params: invalid_params, headers: headers
+
+        expect(response).to have_http_status(:unprocessable_entity)
+      end
+
+      it 'returns error when endereco is nil' do
+        invalid_params = build_invalid_params(endereco: nil)
+
+        post "/funcionarios", params: invalid_params, headers: headers
+
+        expect(response).to have_http_status(:unprocessable_entity)
+      end
+
+      it 'returns error when nome is less than 10 length string' do
+        invalid_params = build_invalid_params(nome: 'dsadsa')
+
+        post "/funcionarios", params: invalid_params, headers: headers
+
+        expect(response).to have_http_status(:unprocessable_entity)
+      end
+
+      it 'returns error when nome is more than 40 length string' do
+        invalid_params = build_invalid_params(nome: 'dsadsakjdfuidshfiueshfuiweshufdsufrsdhufrhewuirhewhyruewruweyuhriew')
 
         post "/funcionarios", params: invalid_params, headers: headers
 
@@ -88,7 +115,7 @@ RSpec.describe "Funcionarios", type: :request do
   end
 
   describe 'DELETE /funcionarios/:id' do
-    let!(:employee) { create(:produto) }
+    let!(:employee) { create(:funcionario) }
 
     it 'deletes the employee and returns no content' do
       aggregate_failures do

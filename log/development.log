@@ -5850,3 +5850,127 @@ Processing by ProdutosController#index as */*
 Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.1ms | Allocations: 1037)
 
 
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to RemoveEmpresaIdFromFuncionario (20241203013333)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "afuncionarios" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar DEFAULT NULL, "cpf" varchar DEFAULT NULL, "endereco" varchar DEFAULT NULL, "empresas_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_afuncionarios_on_empresas_id" ON "afuncionarios" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "afuncionarios" ("id","created_at","updated_at","nome","cpf","endereco","empresas_id")
+                     SELECT "id","created_at","updated_at","nome","cpf","endereco","empresas_id" FROM "funcionarios"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "funcionarios"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "funcionarios" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar DEFAULT NULL, "cpf" varchar DEFAULT NULL, "endereco" varchar DEFAULT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "funcionarios" ("id","created_at","updated_at","nome","cpf","endereco")
+                     SELECT "id","created_at","updated_at","nome","cpf","endereco" FROM "afuncionarios"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "afuncionarios"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241203013333') RETURNING "version"[0m
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to RemoveEmpresaIdFromPagamento (20241203013340)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "apagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "empresas_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_apagamentos_on_empresas_id" ON "apagamentos" ("empresas_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "apagamentos" ("id","tipo","created_at","updated_at","empresas_id")
+                     SELECT "id","tipo","created_at","updated_at","empresas_id" FROM "pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "pagamentos" ("id","tipo","created_at","updated_at")
+                     SELECT "id","tipo","created_at","updated_at" FROM "apagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "apagamentos"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241203013340') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddEmpresaIdFromFuncionario (20241203013447)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "funcionarios" ADD "empresa_id" integer[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_funcionarios_on_empresa_id" ON "funcionarios" ("empresa_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "afuncionarios" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar DEFAULT NULL, "cpf" varchar DEFAULT NULL, "endereco" varchar DEFAULT NULL, "empresa_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_afuncionarios_on_empresa_id" ON "afuncionarios" ("empresa_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "afuncionarios" ("id","created_at","updated_at","nome","cpf","endereco","empresa_id")
+                     SELECT "id","created_at","updated_at","nome","cpf","endereco","empresa_id" FROM "funcionarios"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "funcionarios"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "funcionarios" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nome" varchar DEFAULT NULL, "cpf" varchar DEFAULT NULL, "endereco" varchar DEFAULT NULL, "empresa_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_de212a9b5e"
+FOREIGN KEY ("empresa_id")
+  REFERENCES "empresas" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_funcionarios_on_empresa_id" ON "funcionarios" ("empresa_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "funcionarios" ("id","created_at","updated_at","nome","cpf","endereco","empresa_id")
+                     SELECT "id","created_at","updated_at","nome","cpf","endereco","empresa_id" FROM "afuncionarios"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "afuncionarios"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241203013447') RETURNING "version"[0m
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddEmpresaIdFromPagamento (20241203013452)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "pagamentos" ADD "empresa_id" integer[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_pagamentos_on_empresa_id" ON "pagamentos" ("empresa_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "apagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "empresa_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_apagamentos_on_empresa_id" ON "apagamentos" ("empresa_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "apagamentos" ("id","tipo","created_at","updated_at","empresa_id")
+                     SELECT "id","tipo","created_at","updated_at","empresa_id" FROM "pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "empresa_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_e31a390bbe"
+FOREIGN KEY ("empresa_id")
+  REFERENCES "empresas" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_pagamentos_on_empresa_id" ON "pagamentos" ("empresa_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "pagamentos" ("id","tipo","created_at","updated_at","empresa_id")
+                     SELECT "id","tipo","created_at","updated_at","empresa_id" FROM "apagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "apagamentos"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241203013452') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/funcionarios" for 127.0.0.1 at 2024-12-02 23:02:49 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by FuncionariosController#index as */*
+  Parameters: {"tipo"=>"plastico", "nome"=>"Garrafa PET", "peso"=>10, "funcionario"=>{"nome"=>"Garrafa PET"}}
+  [1m[36mFuncionario Load (0.1ms)[0m  [1m[34mSELECT "funcionarios".* FROM "funcionarios"[0m
+  ↳ app/controllers/funcionarios_controller.rb:7:in `index'
+Completed 200 OK in 6ms (Views: 0.8ms | ActiveRecord: 1.0ms | Allocations: 2880)
+
+
+Started POST "/funcionarios" for 127.0.0.1 at 2024-12-02 23:02:52 -0300
+Processing by FuncionariosController#create as */*
+  Parameters: {"tipo"=>"plastico", "nome"=>"Garrafa PET", "peso"=>10, "funcionario"=>{"nome"=>"Garrafa PET"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/funcionarios_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/funcionarios_controller.rb:18:in `create'
+Completed 422 Unprocessable Content in 247ms (Views: 229.3ms | ActiveRecord: 0.9ms | Allocations: 310849)
+
+
+Started POST "/funcionarios" for 127.0.0.1 at 2024-12-02 23:09:39 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by FuncionariosController#create as */*
+  Parameters: {"cpf"=>"y4ql06udpcoqnob6acf3rddn3o823mhz", "endereco"=>"Apt. 638 352 Cassie Mill, South Isrealside, AZ 35101", "nome"=>"Lorri Murazik DC", "funcionario"=>{"nome"=>"Lorri Murazik DC", "cpf"=>"y4ql06udpcoqnob6acf3rddn3o823mhz", "endereco"=>"Apt. 638 352 Cassie Mill, South Isrealside, AZ 35101"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/funcionarios_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/funcionarios_controller.rb:18:in `create'
+Completed 422 Unprocessable Content in 146ms (Views: 133.6ms | ActiveRecord: 1.6ms | Allocations: 310414)
+
+

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_12_01_172510) do
+ActiveRecord::Schema[7.1].define(version: 2024_12_03_013452) do
   create_table "empresas", force: :cascade do |t|
     t.string "endereco"
     t.string "cnpj"
@@ -34,16 +34,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_01_172510) do
     t.string "nome"
     t.string "cpf"
     t.string "endereco"
-    t.integer "empresas_id"
-    t.index ["empresas_id"], name: "index_funcionarios_on_empresas_id"
+    t.integer "empresa_id"
+    t.index ["empresa_id"], name: "index_funcionarios_on_empresa_id"
   end
 
   create_table "pagamentos", force: :cascade do |t|
     t.string "tipo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "empresas_id"
-    t.index ["empresas_id"], name: "index_pagamentos_on_empresas_id"
+    t.integer "empresa_id"
+    t.index ["empresa_id"], name: "index_pagamentos_on_empresa_id"
   end
 
   create_table "produto_pagamentos", force: :cascade do |t|
@@ -67,8 +67,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_01_172510) do
   end
 
   add_foreign_key "estoques", "empresas"
-  add_foreign_key "funcionarios", "empresas", column: "empresas_id"
-  add_foreign_key "pagamentos", "empresas", column: "empresas_id"
+  add_foreign_key "funcionarios", "empresas"
+  add_foreign_key "pagamentos", "empresas"
   add_foreign_key "produto_pagamentos", "pagamentos"
   add_foreign_key "produto_pagamentos", "produtos"
   add_foreign_key "produtos", "estoques"
