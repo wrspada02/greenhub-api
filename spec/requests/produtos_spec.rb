@@ -4,7 +4,7 @@ RSpec.describe "Produtos", type: :request do
   describe 'GET /produtos' do
     let!(:products) { create_list(:produto, 5) }
 
-    it 'lists all products' do
+    it 'lists all products', :aggregate_failures do
       get "/produtos"
 
       expect(response).to have_http_status(:ok)
@@ -15,16 +15,15 @@ RSpec.describe "Produtos", type: :request do
   describe 'GET /produtos/:id' do
     let(:product) { create(:produto) }
 
-    it 'shows details of a specific product' do
+    it 'shows details of a specific product', :aggregate_failures do
       get "/produtos/#{product.id}"
 
       body = JSON.parse(response.body)
-      aggregate_failures do
-        expect(response).to have_http_status(:ok)
-        expect(body["nome"]).to eq(product.nome)
-        expect(body["tipo"]).to eq(product.tipo)
-        expect(body["peso"]).to eq(product.peso)
-      end
+      
+      expect(response).to have_http_status(:ok)
+      expect(body["nome"]).to eq(product.nome)
+      expect(body["tipo"]).to eq(product.tipo)
+      expect(body["peso"]).to eq(product.peso)
     end
   end
 

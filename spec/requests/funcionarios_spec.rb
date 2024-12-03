@@ -4,7 +4,7 @@ RSpec.describe "Funcionarios", type: :request do
   describe 'GET /funcionarios' do
     let!(:employees) { create_list(:funcionario, 5) }
 
-    it 'lists all employees' do
+    it 'lists all employees', :aggregate_failures do
       get "/funcionarios"
 
       expect(response).to have_http_status(:ok)
@@ -15,16 +15,14 @@ RSpec.describe "Funcionarios", type: :request do
   describe 'GET /funcionarios/:id' do
     let(:employee) { create(:funcionario) }
 
-    it 'shows details of a specific employee' do
+    it 'shows details of a specific employee', :aggregate_failures do
       get "/funcionarios/#{employee.id}"
 
       body = JSON.parse(response.body)
-      aggregate_failures do
-        expect(response).to have_http_status(:ok)
-        expect(body["nome"]).to eq(employee.nome)
-        expect(body["cpf"]).to eq(employee.cpf)
-        expect(body["endereco"]).to eq(employee.endereco)
-      end
+      expect(response).to have_http_status(:ok)
+      expect(body["nome"]).to eq(employee.nome)
+      expect(body["cpf"]).to eq(employee.cpf)
+      expect(body["endereco"]).to eq(employee.endereco)
     end
   end
 
@@ -47,7 +45,7 @@ RSpec.describe "Funcionarios", type: :request do
       let!(:employee) { create(:empresa) }
       
       it 'returns error when cpf is nil' do
-        invalid_params = build_invalid_params(cpf: nil)
+        invalid_params = build_invalid_funcionario_params(cpf: nil)
 
         post "/funcionarios", params: invalid_params, headers: headers
 
@@ -55,7 +53,7 @@ RSpec.describe "Funcionarios", type: :request do
       end
 
       it 'returns error when endereco is nil' do
-        invalid_params = build_invalid_params(endereco: nil)
+        invalid_params = build_invalid_funcionario_params(endereco: nil)
 
         post "/funcionarios", params: invalid_params, headers: headers
 
@@ -63,7 +61,7 @@ RSpec.describe "Funcionarios", type: :request do
       end
 
       it 'returns error when nome is less than 10 length string' do
-        invalid_params = build_invalid_params(nome: 'dsadsa')
+        invalid_params = build_invalid_funcionario_params(nome: 'dsadsa')
 
         post "/funcionarios", params: invalid_params, headers: headers
 
@@ -71,7 +69,7 @@ RSpec.describe "Funcionarios", type: :request do
       end
 
       it 'returns error when nome is more than 40 length string' do
-        invalid_params = build_invalid_params(nome: 'dsadsakjdfuidshfiueshfuiweshufdsufrsdhufrhewuirhewhyruewruweyuhriew')
+        invalid_params = build_invalid_funcionario_params(nome: 'dsadsakjdfuidshfiueshfuiweshufdsufrsdhufrhewuirhewhyruewruweyuhriew')
 
         post "/funcionarios", params: invalid_params, headers: headers
 
