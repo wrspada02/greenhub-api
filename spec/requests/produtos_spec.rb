@@ -34,13 +34,11 @@ RSpec.describe "Produtos", type: :request do
     context 'with valid data' do
       let(:valid_params) { { produto: attributes_for(:produto) } }
 
-      it 'creates a product' do
+      it 'creates a product', :aggregate_failures do
         post "/produtos", params: valid_params, headers: headers
 
-        aggregate_failures do
-          expect(response).to have_http_status(:created)
-          expect(Produto.count).to eq(1)
-        end
+        expect(response).to have_http_status(:created)
+        expect(Produto.count).to eq(1)
       end
     end
 
@@ -69,28 +67,26 @@ RSpec.describe "Produtos", type: :request do
     context 'with valid data' do
       let(:valid_params) { { produto: { nome: "Mouse" } } }
 
-      it 'updates the product and returns the updated product' do
+      it 'updates the product and returns the updated product', :aggregate_failures do
         put "/produtos/#{product.id}", params: valid_params
 
         body = JSON.parse(response.body)
-        aggregate_failures do
-          expect(response).to have_http_status(:ok)
-          expect(body["nome"]).to eq("Mouse")
-        end
+
+        expect(response).to have_http_status(:ok)
+        expect(body["nome"]).to eq("Mouse")
       end
     end
 
     context 'with invalid data' do
       let(:invalid_params) { { produto: { peso: -5 } } }
 
-      it 'returns errors and does not update the product' do
+      it 'returns errors and does not update the product', :aggregate_failures do
         put "/produtos/#{product.id}", params: invalid_params
 
         body = JSON.parse(response.body)
-        aggregate_failures do
-          expect(response).to have_http_status(:unprocessable_entity)
-          expect(body).to include("peso")
-        end
+
+        expect(response).to have_http_status(:unprocessable_entity)
+        expect(body).to include("peso")
       end
     end
   end
@@ -98,13 +94,11 @@ RSpec.describe "Produtos", type: :request do
   describe 'DELETE /produtos/:id' do
     let!(:product) { create(:produto) }
 
-    it 'deletes the product and returns no content' do
-      aggregate_failures do
-        expect {
-          delete "/produtos/#{product.id}"
-        }.to change(Produto, :count).by(-1)
-        expect(response).to have_http_status(:no_content)
-      end
+    it 'deletes the product and returns no content', :aggregate_failures do
+      expect {
+        delete "/produtos/#{product.id}"
+      }.to change(Produto, :count).by(-1)
+      expect(response).to have_http_status(:no_content)
     end
   end
 end

@@ -35,13 +35,11 @@ RSpec.describe "Funcionarios", type: :request do
       let!(:employee) { create(:empresa) }
       let(:valid_params) { { funcionario: attributes_for(:funcionario).merge(empresa_id: employee.id) } }
 
-      it 'creates a employee' do
+      it 'creates a employee', :aggregate_failures do
         post "/funcionarios", params: valid_params, headers: headers
 
-        aggregate_failures do
-          expect(response).to have_http_status(:created)
-          expect(Funcionario.count).to eq(1)
-        end
+        expect(response).to have_http_status(:created)
+        expect(Funcionario.count).to eq(1)
       end
     end
 
@@ -88,28 +86,26 @@ RSpec.describe "Funcionarios", type: :request do
     context 'with valid data' do
       let(:valid_params) { { funcionario: { nome: "Beto da Silva" } } }
 
-      it 'updates the employee and returns the updated employee' do
+      it 'updates the employee and returns the updated employee', :aggregate_failures do
         put "/funcionarios/#{employee.id}", params: valid_params
 
         body = JSON.parse(response.body)
-        aggregate_failures do
-          expect(response).to have_http_status(:ok)
-          expect(body["nome"]).to eq("Beto da Silva")
-        end
+
+        expect(response).to have_http_status(:ok)
+        expect(body["nome"]).to eq("Beto da Silva")
       end
     end
 
     context 'with invalid data' do
       let(:invalid_params) { { funcionario: { nome: "dsadsa" } } }
 
-      it 'returns errors and does not update the employee' do
+      it 'returns errors and does not update the employee', :aggregate_failures do
         put "/funcionarios/#{employee.id}", params: invalid_params
 
         body = JSON.parse(response.body)
-        aggregate_failures do
-          expect(response).to have_http_status(:unprocessable_entity)
-          expect(body).to include("nome")
-        end
+
+        expect(response).to have_http_status(:unprocessable_entity)
+        expect(body).to include("nome")
       end
     end
   end
@@ -117,13 +113,11 @@ RSpec.describe "Funcionarios", type: :request do
   describe 'DELETE /funcionarios/:id' do
     let!(:employee) { create(:funcionario) }
 
-    it 'deletes the employee and returns no content' do
-      aggregate_failures do
-        expect {
-          delete "/funcionarios/#{employee.id}"
-        }.to change(Funcionario, :count).by(-1)
-        expect(response).to have_http_status(:no_content)
-      end
+    it 'deletes the employee and returns no content', :aggregate_failures do
+      expect {
+        delete "/funcionarios/#{employee.id}"
+      }.to change(Funcionario, :count).by(-1)
+      expect(response).to have_http_status(:no_content)
     end
   end
 end
