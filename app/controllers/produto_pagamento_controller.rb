@@ -18,4 +18,13 @@ class ProdutoPagamentoController < ApplicationController
     rescue ActionController::ParameterMissing => e
       render json: { error: "Missing parameter: #{e.param}" }, status: :bad_request
     end
+
+  # GET /produto_pagamentos/pagamentos/:pagamentoId 
+  def show
+    pagamento_id = params.require(:id)
+
+    @produtos = ProdutoPagamento.find_by(pagamento_id: pagamento_id)
+
+    render json: @produtos, status: :ok
+  end
 end

@@ -45,3 +45,13 @@ end
     estoque_id: i+1 
   )
 end
+
+Produto.all.each do |produto|
+  Pagamento.all.each do |pagamento|
+    ProdutoPagamento.create!(
+      quantidade: Faker::Number.number,
+      pagamento_id: pagamento.id,
+      produto_id: produto.id
+    )
+  end
+end

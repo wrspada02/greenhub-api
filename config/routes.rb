@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   end
 
   get "/pagamentos/empresas/:id", controller: "pagamentos", action: :list_payment_by_company
+  get "/produto_pagamento/pagamentos/:id", controller: "produto_pagamento", action: :show
 end
