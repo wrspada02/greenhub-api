@@ -8,9 +8,11 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   
-  resources :produtos
-  resources :empresas
-  resources :funcionarios
-  resources :pagamentos
-  resources :estoques
+  resources :produtos, :empresas, :funcionarios, :estoques
+
+  resources :produto_pagamentos, only: [] do
+    resources :pagamentos, only: [:update]
+  end
+
+  get "/pagamentos/empresas/:id", controller: "pagamentos", action: :list_payment_by_company
 end

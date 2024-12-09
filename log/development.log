@@ -5974,3 +5974,128 @@ Processing by FuncionariosController#create as */*
 Completed 422 Unprocessable Content in 146ms (Views: 133.6ms | ActiveRecord: 1.6ms | Allocations: 310414)
 
 
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to RemoveEmpresaIdFromPagamentos (20241204000525)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "apagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "empresa_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_apagamentos_on_empresa_id" ON "apagamentos" ("empresa_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "apagamentos" ("id","tipo","created_at","updated_at","empresa_id")
+                     SELECT "id","tipo","created_at","updated_at","empresa_id" FROM "pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "empresa_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_e31a390bbe"
+FOREIGN KEY ("empresa_id")
+  REFERENCES "empresas" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_pagamentos_on_empresa_id" ON "pagamentos" ("empresa_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "pagamentos" ("id","tipo","created_at","updated_at","empresa_id")
+                     SELECT "id","tipo","created_at","updated_at","empresa_id" FROM "apagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "apagamentos"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241204000525') RETURNING "version"[0m
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to RemoveEmpresaIdFromPagamentos (20241204000639)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "apagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "empresa_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_apagamentos_on_empresa_id" ON "apagamentos" ("empresa_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "apagamentos" ("id","tipo","created_at","updated_at","empresa_id")
+                     SELECT "id","tipo","created_at","updated_at","empresa_id" FROM "pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "pagamentos" ("id","tipo","created_at","updated_at")
+                     SELECT "id","tipo","created_at","updated_at" FROM "apagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "apagamentos"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241204000639') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddVendaIdEmpresaFromPagamentos (20241204000719)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "pagamentos" ADD "venda_id_empresa" integer[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "apagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "venda_id_empresa" integer DEFAULT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "apagamentos" ("id","tipo","created_at","updated_at","venda_id_empresa")
+                     SELECT "id","tipo","created_at","updated_at","venda_id_empresa" FROM "pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "venda_id_empresa" integer DEFAULT NULL, CONSTRAINT "fk_rails_42da20dae4"
+FOREIGN KEY ("venda_id_empresa")
+  REFERENCES "empresas" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "pagamentos" ("id","tipo","created_at","updated_at","venda_id_empresa")
+                     SELECT "id","tipo","created_at","updated_at","venda_id_empresa" FROM "apagamentos"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "apagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241204000719') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddCompraIdEmpresaFromPagamentos (20241204000724)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "pagamentos" ADD "compra_id_empresa" integer[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "apagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "venda_id_empresa" integer DEFAULT NULL, "compra_id_empresa" integer DEFAULT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "apagamentos" ("id","tipo","created_at","updated_at","venda_id_empresa","compra_id_empresa")
+                     SELECT "id","tipo","created_at","updated_at","venda_id_empresa","compra_id_empresa" FROM "pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "pagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "pagamentos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tipo" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "venda_id_empresa" integer DEFAULT NULL, "compra_id_empresa" integer DEFAULT NULL, CONSTRAINT "fk_rails_42da20dae4"
+FOREIGN KEY ("venda_id_empresa")
+  REFERENCES "empresas" ("id")
+, CONSTRAINT "fk_rails_c0dd374378"
+FOREIGN KEY ("compra_id_empresa")
+  REFERENCES "empresas" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "pagamentos" ("id","tipo","created_at","updated_at","venda_id_empresa","compra_id_empresa")
+                     SELECT "id","tipo","created_at","updated_at","venda_id_empresa","compra_id_empresa" FROM "apagamentos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "apagamentos"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241204000724') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2024-12-09 13:04:32 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /root/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/railties-7.1.5/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /root/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/railties-7.1.5/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.6ms | Allocations: 525)
+Completed 200 OK in 200ms (Views: 4.5ms | ActiveRecord: 0.0ms | Allocations: 287674)
+
+
+Started POST "/pagamentos/empresas/2" for 127.0.0.1 at 2024-12-09 13:05:03 -0300
+  
+ActionController::RoutingError (No route matches [POST] "/pagamentos/empresas/2"):
+  
+Started GET "/pagamentos/empresas/2" for 127.0.0.1 at 2024-12-09 13:05:09 -0300
+Processing by PagamentosController#list_payment_by_company as */*
+  Parameters: {"cpf"=>"y4ql06udpcoqnob6acf3rddn3o823mhz", "endereco"=>"Apt. 638 352 Cassie Mill, South Isrealside, AZ 35101", "nome"=>"Lorri Murazik DC", "id"=>"2", "pagamento"=>{}}
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 1.0ms | Allocations: 211)
+
+

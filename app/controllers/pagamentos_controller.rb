@@ -1,12 +1,6 @@
 class PagamentosController < ApplicationController
     before_action :set_pagamento, only: %i[show update destroy]
   
-    # GET /pagamentos
-    def index
-      @pagamentos = Pagamento.all
-      render json: @pagamentos
-    end
-  
     # GET /pagamentos/:id
     def show
       render json: @pagamento
@@ -36,6 +30,11 @@ class PagamentosController < ApplicationController
       @pagamento.destroy
       head :no_content
     end
+
+    # GET /pagamentos/empresa/:empresaId?venda&compra
+    def list_payment_by_company
+      render json: { "message": "Hello World" }
+    end
   
     private
   
@@ -48,5 +47,5 @@ class PagamentosController < ApplicationController
     def pagamento_params
       params.require(:pagamento).permit(:tipo, :venda_id_empresa, :compra_id_empresa)
     end
-  end
+end
   
