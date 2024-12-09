@@ -49,6 +49,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 7.0.0'
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'cpf_faker'
   gem "debug", platforms: %i[ mri mswin64 ]
 end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_12_04_000724) do
+ActiveRecord::Schema[7.1].define(version: 2024_12_09_220558) do
   create_table "empresas", force: :cascade do |t|
     t.string "endereco"
     t.string "cnpj"
@@ -21,10 +21,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_04_000724) do
   end
 
   create_table "estoques", force: :cascade do |t|
-    t.string "endereço"
     t.integer "empresa_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "endereco"
     t.index ["empresa_id"], name: "index_estoques_on_empresa_id"
   end
 

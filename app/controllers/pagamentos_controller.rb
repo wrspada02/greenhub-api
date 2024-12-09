@@ -31,9 +31,13 @@ class PagamentosController < ApplicationController
       head :no_content
     end
 
-    # GET /pagamentos/empresa/:empresaId?venda&compra
+    # GET /pagamentos/empresas/:empresaId?venda&compra
     def list_payment_by_company
-      render json: { "message": "Hello World" }
+      empresa_id = params.require(:empresaId)
+
+      @pagamentos = Pagamento.find_by(empresa_id: empresa_id)
+
+      render json: @pagamentos, status: :ok
     end
   
     private
