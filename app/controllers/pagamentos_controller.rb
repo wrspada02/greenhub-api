@@ -33,9 +33,9 @@ class PagamentosController < ApplicationController
 
     # GET /pagamentos/empresas/:empresaId?venda&compra
     def list_payment_by_company
-      empresa_id = params.require(:empresaId)
+      empresa_id = params.require(:id)
 
-      @pagamentos = Pagamento.find_by(empresa_id: empresa_id)
+      @pagamentos = Pagamento.find_by(venda_id_empresa: empresa_id, compra_id_empresa: empresa_id)
 
       render json: @pagamentos, status: :ok
     end

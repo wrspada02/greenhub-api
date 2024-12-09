@@ -18,10 +18,30 @@ Empresa.all.each do |empresa|
   )
 
   Funcionario.create!(
-    nome: Faker::Name.name,
+    nome: loop do
+      name = Faker::Name.name
+      break name if name.length >= 15
+    end,
     cpf: Faker::CPF.pretty,
     endereco: Faker::Address.full_address,       
     empresa_id: empresa.id
   )
+
+  Pagamento.create!(
+    tipo: Faker::Name.name,
+    venda_id_empresa: empresa.id,
+    compra_id_empresa: empresa.id,
+  )
 end
 
+5.times do |i|
+  Produto.create!(
+    tipo: Faker::Name.name,
+    peso: Faker::Number.number,
+    nome: loop do
+      name = Faker::Name.name
+      break name if name.length >= 15
+    end,
+    estoque_id: i+1 
+  )
+end
